@@ -1,5 +1,14 @@
-<div class="form-container">
-    <div *ngIf="!(authService.user | async)" class="login-form">
+<!-- Toggle button -->
+<div class="switch-button" *ngIf="!(authService.user | async)">
+    <button mat-icon-button (click)="toggleState()" [ngSwitch]="toggle">
+        <mat-icon class="md-24" *ngSwitchCase="true"   matTooltip="Login"   [matTooltipPosition]="'left'">arrow_forward</mat-icon>
+        <mat-icon class="md-24" *ngSwitchCase="false"  matTooltip="Sing up" [matTooltipPosition]="'left'">account_circle</mat-icon>
+    </button>
+</div>
+
+<!-- Login Form -->
+<div *ngIf="!toggle" [@toggleState]="!toggle" class="form-container">
+    <div class="form">
         <h1>Login</h1>
 
         <mat-form-field class="form-input">
@@ -8,7 +17,7 @@
                    type="email"
                    placeholder="email"
                    [formControl]="email"
-                   (input)="change()"
+                   (input)="changeInput()"
                    email required>
 
             <mat-error *ngIf="email.hasError('required')">
@@ -26,7 +35,7 @@
                    type="password"
                    placeholder="password"
                    [formControl]="password"
-                   (input)="change()"
+                   (input)="changeInput()"
                    minlength="6" required>
 
             <mat-error *ngIf="password.hasError('required')">
@@ -44,17 +53,20 @@
             <button mat-button  (click)="login()" [disabled]="email.invalid || password.invalid">Login</button>
         </p>
     </div>
-    <!--
-    <div *ngIf="!(authService.user | async)" class="login-form">
+</div>
+
+<!-- Sing Up Form -->
+<div *ngIf="toggle" [@toggleState]="toggle" class="form-container">
+    <div class="form">
         <h1>Sing Up</h1>
 
-       <mat-form-field>
+        <mat-form-field class="form-input">
             <input matInput
                    name="email"
                    type="email"
                    placeholder="email"
                    [formControl]="email"
-                   (input)="change()"
+                   (input)="changeInput()"
                    email required>
 
             <mat-error *ngIf="email.hasError('required')">
@@ -66,13 +78,13 @@
             </mat-error>
         </mat-form-field>
 
-        <mat-form-field>
+        <mat-form-field class="form-input">
             <input matInput
                    name="password"
                    type="password"
                    placeholder="password"
                    [formControl]="password"
-                   (input)="change()"
+                   (input)="changeInput()"
                    minlength="6" required>
 
             <mat-error *ngIf="password.hasError('required')">
@@ -86,10 +98,8 @@
 
         <mat-error class="error" *ngIf="authService.error">{{authService.error}}</mat-error>
 
-
-          <p class="action">
-            <button mat-button (click)="signup()" [disabled]="email.invalid || password.invalid">Sing Up</button>
+        <p class="action">
+            <button mat-button (click)="signUp()" [disabled]="email.invalid || password.invalid">Sing Up</button>
         </p>
     </div>
-    -->
 </div>

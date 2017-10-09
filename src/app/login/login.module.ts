@@ -8,6 +8,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material';
 import { MatButtonModule } from '@angular/material';
 import { MatIconModule } from '@angular/material';
+import { MatTooltipModule } from '@angular/material';
 
 // App
 import { LoginRoutingModule } from './login-routing.module';
@@ -22,6 +23,7 @@ import { LoginComponent } from './login.component';
         MatInputModule,
         MatButtonModule,
         MatIconModule,
+        MatTooltipModule,
     ],
     declarations: [
         LoginComponent,

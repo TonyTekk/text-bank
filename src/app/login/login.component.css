@@ -1,11 +1,19 @@
-.form-container {
-    display: flex;
-    height: 70vh;
+.switch-button {
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 
-.login-form {
+.form-container {
+    display: flex;
+    height: 100vh;
+}
+
+.form {
     width: 250px;
-    margin: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 150px;
 }
 
 .form-input {
@@ -21,4 +29,10 @@
 
 .action {
     margin-top: 32px;
+}
+
+@media(max-width:767px){
+    .form {
+        margin: auto;
+    }
 }

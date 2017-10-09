@@ -10,6 +10,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 // Material
 import { MatButtonModule } from '@angular/material';
 import { MatIconModule } from '@angular/material';
+import { MatTooltipModule } from '@angular/material';
 
 // App
 import { AppRoutingModule } from './app-routing.module';
@@ -27,6 +28,7 @@ import { environment } from '../environments/environment';
         AngularFireAuthModule,
         MatButtonModule,
         MatIconModule,
+        MatTooltipModule,
     ],
     declarations: [
         AppComponent,

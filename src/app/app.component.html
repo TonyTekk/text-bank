@@ -1,6 +1,6 @@
 <div class="log-out" *ngIf="authService.user | async">
-    <button mat-icon-button (click)="logout()">
-        <mat-icon class="md-24" aria-label="Example icon-button with a heart icon">close</mat-icon>
+    <button mat-icon-button (click)="logout()" matTooltip="Logout" [matTooltipPosition]="'left'">
+        <mat-icon class="md-24">close</mat-icon>
     </button>
 </div>
 
