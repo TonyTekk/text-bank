@@ -1,0 +1,9 @@
+.form-container {
+    display: flex;
+    height: 70vh;
+}
+
+.login-form {
+    width: 200px;
+    margin: auto;
+}
