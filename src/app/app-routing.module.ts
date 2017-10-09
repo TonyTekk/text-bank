@@ -8,21 +8,17 @@ import { AuthGuard } from './services/auth-guard.service';
 
 const appRoutes: Routes = [
     {
-        path: '',
-        loadChildren: 'app/login/login.module#LoginModule',
+        path: 'texts',
+        loadChildren: 'app/texts/texts.module#TextsModule',
+        canLoad: [AuthGuard],
     },
     {
         path: 'login',
         loadChildren: 'app/login/login.module#LoginModule',
     },
     {
-        path: 'texts',
-        loadChildren: 'app/texts/texts.module#TextsModule',
-        canLoad: [AuthGuard],
-    },
-    {
         path: '**',
-        redirectTo: '/login',
+        redirectTo: '/texts',
     }
 ];
 
