@@ -21,7 +21,7 @@ export class AuthService {
         this.user = auth.authState;
     }
 
-    public signUp(email: string, password: string) {
+    public signUp(email: string, password: string): void {
         this.error = null;
 
         this.auth.auth.createUserWithEmailAndPassword(email, password)
@@ -37,7 +37,7 @@ export class AuthService {
             });
     }
 
-    public login(email: string, password: string) {
+    public login(email: string, password: string): void {
         this.error = null;
 
         this.auth.auth.signInWithEmailAndPassword(email, password)
@@ -53,7 +53,7 @@ export class AuthService {
             });
     }
 
-    public logout() {
+    public logout(): void {
         this.auth.auth.signOut();
         this.router.navigate(['/login']);
     }

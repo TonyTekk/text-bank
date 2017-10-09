@@ -35,19 +35,19 @@ export class LoginComponent {
         public authService: AuthService,
     ) {}
 
-    public login() {
+    public login(): void {
         this.authService.login(this.email.value, this.password.value);
     }
 
-    public signUp() {
+    public signUp(): void {
         this.authService.signUp(this.email.value, this.password.value);
     }
 
-    public changeInput() {
+    public changeInput(): void {
         this.authService.error = null;
     }
 
-    public toggleState() {
+    public toggleState(): void {
         this.toggle = !this.toggle;
     }
 }

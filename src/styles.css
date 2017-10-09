@@ -4,3 +4,11 @@ body {
     font-family: 'Roboto', sans-serif;
     color: #0F110C;
 }
+
+.text-center {
+    text-align: center;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}

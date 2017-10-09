@@ -14,7 +14,7 @@ export class AppComponent {
         public authService: AuthService
     ) {}
 
-    public logout() {
+    public logout(): void {
         this.authService.logout();
     }
 }

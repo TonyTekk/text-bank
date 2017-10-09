@@ -6,4 +6,8 @@ import { Component } from '@angular/core';
     templateUrl: './texts.component.html',
     styleUrls: ['./texts.component.css']
 })
-export class TextsComponent { }
+export class TextsComponent {
+    public addArticle(): void {
+        console.log('add');
+    }
+}
