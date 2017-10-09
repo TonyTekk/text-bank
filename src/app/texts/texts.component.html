@@ -1,5 +1,12 @@
 <h1 class="text-center uppercase">texts</h1>
 
+<ul>
+    <li *ngFor="let item of article.list | async">
+        {{ item | json }}
+    </li>
+</ul>
+
+
 <div class="btn-add">
     <button mat-icon-button (click)="addArticle()" matTooltip="Add text" [matTooltipPosition]="'left'">
         <mat-icon class="md-24">add</mat-icon>
