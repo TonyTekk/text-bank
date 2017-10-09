@@ -4,6 +4,21 @@
 }
 
 .login-form {
-    width: 200px;
+    width: 250px;
     margin: auto;
+}
+
+.form-input {
+    width: 100%;
+}
+
+.error {
+    position: absolute;
+    width: 250px;
+    overflow: hidden;
+    font-size: 75%;
+}
+
+.action {
+    margin-top: 32px;
 }

@@ -1,5 +1,7 @@
 // Angular
 import { Component } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { Validators } from '@angular/forms';
 
 // Services
 import { AuthService } from '../services/auth.service';
@@ -10,20 +12,22 @@ import { AuthService } from '../services/auth.service';
     styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-    public email: string;
-    public password: string;
+    public email     = new FormControl('', [Validators.required, Validators.email]);
+    public password  = new FormControl('', [Validators.required, Validators.minLength(6)]);
 
     public constructor(
         public authService: AuthService
     ) {}
 
     public login() {
-        this.authService.login(this.email, this.password);
-        this.email = this.password = '';
+        this.authService.login(this.email.value, this.password.value);
     }
 
     public signup() {
-        this.authService.signUp(this.email, this.password);
-        this.email = this.password = '';
+        this.authService.signUp(this.email.value, this.password.value);
+    }
+
+    public change() {
+        this.authService.error = null;
     }
 }

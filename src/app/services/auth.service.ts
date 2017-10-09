@@ -12,6 +12,7 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class AuthService {
     public user: Observable<firebase.User>;
+    public error: string = null;
 
     public constructor(
         private auth: AngularFireAuth,
@@ -21,24 +22,34 @@ export class AuthService {
     }
 
     public signUp(email: string, password: string) {
+        this.error = null;
+
         this.auth.auth.createUserWithEmailAndPassword(email, password)
             .then((value) => {
                 console.log('Sing up with: ', value);
+
                 this.router.navigate(['/texts']);
             })
             .catch((err) => {
-                console.warn('Something went wrong with sing up:', err.message);
+                console.warn('Something went wrong with sing up:', err);
+
+                this.error = err.message;
             });
     }
 
     public login(email: string, password: string) {
+        this.error = null;
+
         this.auth.auth.signInWithEmailAndPassword(email, password)
             .then((value) => {
                 console.log('Logged in: ', value);
+
                 this.router.navigate(['/texts']);
             })
             .catch((err) => {
-                console.warn('Something went wrong with login:', err.message);
+                console.warn('Something went wrong with login:', err);
+
+                this.error = err.message;
             });
     }
 

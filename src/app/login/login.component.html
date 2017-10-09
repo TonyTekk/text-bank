@@ -2,29 +2,94 @@
     <div *ngIf="!(authService.user | async)" class="login-form">
         <h1>Login</h1>
 
-        <mat-form-field class="example-full-width">
-            <input matInput name="email"    type="email"    placeholder="Email"    [(ngModel)]="email">
+        <mat-form-field class="form-input">
+            <input matInput
+                   name="email"
+                   type="email"
+                   placeholder="email"
+                   [formControl]="email"
+                   (input)="change()"
+                   email required>
+
+            <mat-error *ngIf="email.hasError('required')">
+                You must enter a value
+            </mat-error>
+
+            <mat-error *ngIf="email.hasError('email')">
+                Not a valid email
+            </mat-error>
         </mat-form-field>
 
-        <mat-form-field class="example-full-width">
-            <input matInput name="password" type="password" placeholder="password" [(ngModel)]="password">
+        <mat-form-field class="form-input">
+            <input matInput
+                   name="password"
+                   type="password"
+                   placeholder="password"
+                   [formControl]="password"
+                   (input)="change()"
+                   minlength="6" required>
+
+            <mat-error *ngIf="password.hasError('required')">
+                You must enter a value
+            </mat-error>
+
+            <mat-error *ngIf="password.hasError('minlength')">
+                Password must have more than 6 characters
+            </mat-error>
         </mat-form-field>
 
-        <button mat-button color="primary" (click)="login()" [disabled]="!email || !password">Login</button>
+        <mat-error class="error" *ngIf="authService.error">{{authService.error}}</mat-error>
+
+        <p class="action">
+            <button mat-button  (click)="login()" [disabled]="email.invalid || password.invalid">Login</button>
+        </p>
     </div>
     <!--
     <div *ngIf="!(authService.user | async)" class="login-form">
         <h1>Sing Up</h1>
 
-        <mat-form-field class="example-full-width">
-            <input matInput name="email"    type="email"    placeholder="Email"    [(ngModel)]="email">
+       <mat-form-field>
+            <input matInput
+                   name="email"
+                   type="email"
+                   placeholder="email"
+                   [formControl]="email"
+                   (input)="change()"
+                   email required>
+
+            <mat-error *ngIf="email.hasError('required')">
+                You must enter a value
+            </mat-error>
+
+            <mat-error *ngIf="email.hasError('email')">
+                Not a valid email
+            </mat-error>
         </mat-form-field>
 
-        <mat-form-field class="example-full-width">
-            <input matInput name="password" type="password" placeholder="password" [(ngModel)]="password">
+        <mat-form-field>
+            <input matInput
+                   name="password"
+                   type="password"
+                   placeholder="password"
+                   [formControl]="password"
+                   (input)="change()"
+                   minlength="6" required>
+
+            <mat-error *ngIf="password.hasError('required')">
+                You must enter a value
+            </mat-error>
+
+            <mat-error *ngIf="password.hasError('minlength')">
+                Password must have more than 6 characters
+            </mat-error>
         </mat-form-field>
 
-        <button mat-button (click)="signup()" [disabled]="!email || !password">Sing Up</button>
+        <mat-error class="error" *ngIf="authService.error">{{authService.error}}</mat-error>
+
+
+          <p class="action">
+            <button mat-button (click)="signup()" [disabled]="email.invalid || password.invalid">Sing Up</button>
+        </p>
     </div>
     -->
 </div>
