@@ -10,6 +10,7 @@ import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs/Observable';
 
 export interface Article {
+    id: string;
     title: string;
     description: string;
     text: string;
@@ -28,7 +29,18 @@ export class ArticleService {
             (user: firebase.User) => {
                 if (user) {
                     this.userId = user.uid;
-                    this.list = this.db.list(`articles/${this.userId}`).valueChanges();
+
+                    this.list = this.db.list(`articles/${this.userId}`).snapshotChanges()
+                        .map(actions => {
+                            return actions.map(item => {
+                                return {
+                                    id: item.payload.key,
+                                    title: item.payload.val().title,
+                                    description: item.payload.val().description,
+                                    text: item.payload.val().text,
+                                };
+                            });
+                        });
                 }
             });
     }
@@ -36,6 +48,12 @@ export class ArticleService {
     public push(item: Article): void {
         if (this.userId) {
             this.db.list(`articles/${this.userId}`).push(item);
+        }
+    }
+
+    public remove(item): void {
+        if (this.userId) {
+            this.db.list(`articles/${this.userId}`).remove(item);
         }
     }
 }

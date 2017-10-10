@@ -39,7 +39,7 @@ export class TextsComponent implements OnInit {
         public dialog: MatDialog
     ) { }
 
-    public addArticle(): void {
+    public add(): void {
         const dialogRef = this.dialog.open(TextAddComponent);
 
         dialogRef.afterClosed().subscribe(
@@ -50,7 +50,11 @@ export class TextsComponent implements OnInit {
             });
     }
 
-    ngOnInit() {
+    public remove(id: string): void {
+        this.article.remove(id);
+    }
+
+    public ngOnInit(): void {
         this.database = new TableDatabase(this.article);
         this.dataSource = new TableDataSource(this.database);
 
@@ -77,6 +81,7 @@ export class TableDatabase {
     ) {
         this.article.list.subscribe(
             (list) => {
+                console.log(list);
                 this.dataChange.next(list);
             });
     }
