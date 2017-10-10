@@ -29,7 +29,7 @@ import { TextRemoveComponent } from './text-remove/text-remove.component';
     styleUrls: ['./texts.component.css']
 })
 export class TextsComponent implements OnInit {
-    public columns = ['title', 'description', 'text', 'action'];
+    public columns = ['title', 'text', 'action'];
     public database: TableDatabase;
     public dataSource: TableDataSource | null;
 

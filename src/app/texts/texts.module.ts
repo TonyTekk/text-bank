@@ -14,6 +14,7 @@ import { MatTooltipModule } from '@angular/material';
 import { MatDialogModule } from '@angular/material';
 import { MatInputModule } from '@angular/material';
 import { MatTableModule } from '@angular/material';
+import { MatMenuModule } from '@angular/material';
 
 // App
 import { TextsRoutingModule } from './texts-routing.module';
@@ -34,6 +35,7 @@ import { TextRemoveComponent } from './text-remove/text-remove.component';
         MatDialogModule,
         MatInputModule,
         MatTableModule,
+        MatMenuModule,
     ],
     declarations: [
         TextsComponent,

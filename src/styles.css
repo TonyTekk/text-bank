@@ -16,3 +16,7 @@ body {
 .uppercase {
     text-transform: uppercase;
 }
+
+.warn {
+    color: #e53935;
+}

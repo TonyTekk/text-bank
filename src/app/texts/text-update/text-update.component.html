@@ -1,5 +1,5 @@
 <form [formGroup]="form" (ngSubmit)="update()">
-    <h2>Update</h2>
+    <h2>Update List</h2>
 
     <mat-form-field class="form-input">
         <input matInput
@@ -35,7 +35,7 @@
         </textarea>
     </mat-form-field>
 
-    <p class="text-center">
+    <p>
         <button mat-button color="warn" [mat-dialog-close]="false">Close</button>
         <button mat-button [disabled]="form.invalid">OK</button>
     </p>

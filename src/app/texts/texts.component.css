@@ -16,12 +16,51 @@
 
 .mat-form-field {
     flex-grow: 1;
-    margin-left: 32px;
+   /* margin-left: 32px; */
 }
 
 .mat-table {
     width: 100%;
     overflow: auto;
-    max-height: 500px;
+    max-height: 1000px;
 }
 
+.action {
+    flex: 0 0 40px;
+}
+
+.title{
+    flex: 0 0 150px;
+}
+
+.title-description {
+    font-weight: 700;
+}
+
+.description {
+    font-size: 90%;
+    color: rgba(0, 0, 0, 0.54);
+}
+
+.text {
+
+}
+
+.text-description {
+    font-size: 90%;
+}
+
+@media(max-width:767px){
+    .text {
+        display: none;
+    }
+
+    .action {
+        flex: 1;
+    }
+
+    .title {
+        flex: 1;
+    }
+
+}
