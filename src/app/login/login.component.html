@@ -1,5 +1,5 @@
 <!-- Toggle button -->
-<div class="switch-button" *ngIf="!(authService.user | async)">
+<div class="text-right" *ngIf="!(authService.user | async)">
     <button mat-icon-button (click)="toggleState()" [ngSwitch]="toggle">
         <mat-icon class="md-24" *ngSwitchCase="true"   matTooltip="Login"   [matTooltipPosition]="'left'">arrow_downward</mat-icon>
         <mat-icon class="md-24" *ngSwitchCase="false"  matTooltip="Sing up" [matTooltipPosition]="'left'">add</mat-icon>

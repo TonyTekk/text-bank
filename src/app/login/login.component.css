@@ -1,12 +1,6 @@
-.switch-button {
-    position: absolute;
-    top: 0;
-    right: 0;
-}
-
 .form-container {
     display: flex;
-    height: 100vh;
+    height: 90vh;
 }
 
 .form {
