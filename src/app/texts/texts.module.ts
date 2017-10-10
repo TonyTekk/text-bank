@@ -19,7 +19,7 @@ import { MatTableModule } from '@angular/material';
 import { TextsRoutingModule } from './texts-routing.module';
 import { TextsComponent } from './texts.component';
 import { ArticleService } from '../services/article.service';
-import { TextAddComponent } from './text-add/text-add.component';
+import { TextUpdateComponent } from './text-update/text-update.component';
 import { TextRemoveComponent } from './text-remove/text-remove.component';
 
 @NgModule({
@@ -37,11 +37,11 @@ import { TextRemoveComponent } from './text-remove/text-remove.component';
     ],
     declarations: [
         TextsComponent,
-        TextAddComponent,
+        TextUpdateComponent,
         TextRemoveComponent,
     ],
     entryComponents: [
-        TextAddComponent,
+        TextUpdateComponent,
         TextRemoveComponent,
     ],
     providers: [

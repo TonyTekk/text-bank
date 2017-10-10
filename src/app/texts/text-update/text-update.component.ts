@@ -13,13 +13,13 @@ import { MAT_DIALOG_DATA } from '@angular/material';
 import { ArticleModel } from '../../models/article.model';
 
 @Component({
-    selector: 'app-text-add',
-    templateUrl: './text-add.component.html',
-    styleUrls: ['./text-add.component.css']
+    selector: 'app-text-update',
+    templateUrl: './text-update.component.html',
+    styleUrls: ['./text-update.component.css']
 })
-export class TextAddComponent {
+export class TextUpdateComponent {
     public constructor(
-        public dialogRef: MatDialogRef<TextAddComponent>,
+        public dialogRef: MatDialogRef<TextUpdateComponent>,
         @Inject(MAT_DIALOG_DATA) public article: ArticleModel
     ) { }
 

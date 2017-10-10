@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TextAddComponent } from './text-add.component';
+import { TextAddComponent } from './text-update.component';
 
 describe('TextAddComponent', () => {
   let component: TextAddComponent;

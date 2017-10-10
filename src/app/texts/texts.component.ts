@@ -20,7 +20,7 @@ import { MatDialog } from '@angular/material';
 // App
 import { ArticleService } from '../services/article.service';
 import { ArticleModel } from '../models/article.model';
-import { TextAddComponent } from './text-add/text-add.component';
+import { TextUpdateComponent } from './text-update/text-update.component';
 import { TextRemoveComponent } from './text-remove/text-remove.component';
 
 @Component({
@@ -55,7 +55,7 @@ export class TextsComponent implements OnInit {
     }
 
     public add(): void {
-        const dialogRef = this.dialog.open(TextAddComponent, {
+        const dialogRef = this.dialog.open(TextUpdateComponent, {
             data: new ArticleModel({})
         });
 
@@ -68,7 +68,7 @@ export class TextsComponent implements OnInit {
     }
 
     public edit(item: ArticleModel): void {
-        const dialogRef = this.dialog.open(TextAddComponent, {
+        const dialogRef = this.dialog.open(TextUpdateComponent, {
             data: item
         });
 
