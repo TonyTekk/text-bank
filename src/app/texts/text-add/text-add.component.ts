@@ -10,7 +10,7 @@ import { MatDialogRef } from '@angular/material';
 import { MAT_DIALOG_DATA } from '@angular/material';
 
 // App
-import { Article } from '../../services/article.service';
+import { ArticleModel } from '../../models/article.model';
 
 @Component({
     selector: 'app-text-add',
@@ -20,7 +20,7 @@ import { Article } from '../../services/article.service';
 export class TextAddComponent {
     public constructor(
         public dialogRef: MatDialogRef<TextAddComponent>,
-        @Inject(MAT_DIALOG_DATA) public article: Article
+        @Inject(MAT_DIALOG_DATA) public article: ArticleModel
     ) { }
 
     public form = new FormGroup({
@@ -29,13 +29,16 @@ export class TextAddComponent {
         text       : new FormControl(this.article.text),
     });
 
-    public add(): void {
-        this.dialogRef.close({
+    public update(): void {
+        const article = new ArticleModel({
             id: this.article.id,
+            projectId: this.article.projectId,
             title: this.form.controls.title.value,
             description: this.form.controls.description.value,
             text: this.form.controls.text.value,
         });
+
+        this.dialogRef.close(article);
     }
 
     public onNoClick(): void {

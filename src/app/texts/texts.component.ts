@@ -19,7 +19,7 @@ import { MatDialog } from '@angular/material';
 
 // App
 import { ArticleService } from '../services/article.service';
-import { Article } from '../services/article.service';
+import { ArticleModel } from '../models/article.model';
 import { TextAddComponent } from './text-add/text-add.component';
 import { TextRemoveComponent } from './text-remove/text-remove.component';
 
@@ -56,51 +56,46 @@ export class TextsComponent implements OnInit {
 
     public add(): void {
         const dialogRef = this.dialog.open(TextAddComponent, {
-            data: {
-                id: null,
-                title: '',
-                description: '',
-                text: ''
-            }
+            data: new ArticleModel({})
         });
 
         dialogRef.afterClosed().subscribe(
-            (article: Article) => {
+            (article: ArticleModel) => {
                 if (article) {
                     this.article.push(article);
                 }
             });
     }
 
-    public edit(item: Article): void {
+    public edit(item: ArticleModel): void {
         const dialogRef = this.dialog.open(TextAddComponent, {
             data: item
         });
 
         dialogRef.afterClosed().subscribe(
-            (article: Article) => {
+            (article: ArticleModel) => {
                 if (article) {
                     this.article.update(article);
                 }
             });
     }
 
-    public remove(id: string): void {
+    public remove(article: ArticleModel): void {
         const dialogRef = this.dialog.open(TextRemoveComponent);
 
         dialogRef.afterClosed().subscribe(
             (result: boolean) => {
                 if (result) {
-                    this.article.remove(id);
+                    this.article.remove(article);
                 }
             });
     }
 }
 
 export class TableDatabase {
-    public dataChange: BehaviorSubject<Article[]> = new BehaviorSubject<Article[]>([]);
+    public dataChange: BehaviorSubject<ArticleModel[]> = new BehaviorSubject<ArticleModel[]>([]);
 
-    public get data(): Article[] {
+    public get data(): ArticleModel[] {
         return this.dataChange.value;
     }
 
@@ -126,14 +121,14 @@ export class TableDataSource extends DataSource<any> {
         super();
     }
 
-    public connect(): Observable<Article[]> {
+    public connect(): Observable<ArticleModel[]> {
         const displayDataChanges = [
             this.database.dataChange,
             this.filterChange,
         ];
 
         return Observable.merge(...displayDataChanges).map(() => {
-            return this.database.data.slice().filter((item: Article) => {
+            return this.database.data.slice().filter((item: ArticleModel) => {
                 // Search title and description
                 const searchStr = (item.title + item.description).toLowerCase();
 
