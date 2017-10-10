@@ -28,7 +28,7 @@ import { TextAddComponent } from './text-add/text-add.component';
     styleUrls: ['./texts.component.css']
 })
 export class TextsComponent implements OnInit {
-    public columns = ['title', 'description', 'text'];
+    public columns = ['title', 'description', 'text', 'action'];
     public database: TableDatabase;
     public dataSource: TableDataSource | null;
 

@@ -1,5 +1,4 @@
 <div class="table-container">
-
     <div class="header">
         <mat-form-field floatPlaceholder="never">
             <input matInput #filter placeholder="Filter articles">
@@ -26,16 +25,21 @@
             <mat-cell *matCellDef="let row"> {{row.text | slice:0:50 }}...</mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="action">
+            <mat-header-cell *matHeaderCellDef></mat-header-cell>
+            <mat-cell class="text-center" *matCellDef="let row">
+                <button mat-icon-button>
+                    <mat-icon class="md-24">mode_edit</mat-icon>
+                </button>
+                <button mat-icon-button>
+                    <mat-icon class="md-24" color="warn">delete</mat-icon>
+                </button>
+            </mat-cell>
+        </ng-container>
+
         <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
         <mat-row *matRowDef="let row; columns: columns;"></mat-row>
 
     </mat-table>
 </div>
 </div>
-<!--
-<div class="text-right">
-    <button mat-icon-button (click)="addArticle()" matTooltip="Add text" [matTooltipPosition]="'left'">
-        <mat-icon class="md-24">add</mat-icon>
-    </button>
-</div>
--->
