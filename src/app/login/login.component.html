@@ -1,15 +1,15 @@
 <!-- Toggle button -->
 <div class="switch-button" *ngIf="!(authService.user | async)">
     <button mat-icon-button (click)="toggleState()" [ngSwitch]="toggle">
-        <mat-icon class="md-24" *ngSwitchCase="true"   matTooltip="Login"   [matTooltipPosition]="'left'">arrow_forward</mat-icon>
-        <mat-icon class="md-24" *ngSwitchCase="false"  matTooltip="Sing up" [matTooltipPosition]="'left'">account_circle</mat-icon>
+        <mat-icon class="md-24" *ngSwitchCase="true"   matTooltip="Login"   [matTooltipPosition]="'left'">arrow_downward</mat-icon>
+        <mat-icon class="md-24" *ngSwitchCase="false"  matTooltip="Sing up" [matTooltipPosition]="'left'">add</mat-icon>
     </button>
 </div>
 
 <!-- Login Form -->
 <div *ngIf="!toggle" [@toggleState]="!toggle" class="form-container">
     <div class="form">
-        <h1>Login</h1>
+        <h2>Login</h2>
 
         <mat-form-field class="form-input">
             <input matInput
@@ -36,14 +36,14 @@
                    placeholder="password"
                    [formControl]="password"
                    (input)="changeInput()"
-                   minlength="6" required>
+                   minlength="5" required>
 
             <mat-error *ngIf="password.hasError('required')">
                 You must enter a value
             </mat-error>
 
             <mat-error *ngIf="password.hasError('minlength')">
-                Password must have more than 6 characters
+                Password must have more than 5 characters
             </mat-error>
         </mat-form-field>
 
@@ -58,7 +58,7 @@
 <!-- Sing Up Form -->
 <div *ngIf="toggle" [@toggleState]="toggle" class="form-container">
     <div class="form">
-        <h1>Sing Up</h1>
+        <h2>Sing Up</h2>
 
         <mat-form-field class="form-input">
             <input matInput
@@ -85,14 +85,14 @@
                    placeholder="password"
                    [formControl]="password"
                    (input)="changeInput()"
-                   minlength="6" required>
+                   minlength="5" required>
 
             <mat-error *ngIf="password.hasError('required')">
                 You must enter a value
             </mat-error>
 
             <mat-error *ngIf="password.hasError('minlength')">
-                Password must have more than 6 characters
+                Password must have more than 5 characters
             </mat-error>
         </mat-form-field>
 
