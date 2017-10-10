@@ -1,0 +1,42 @@
+<form [formGroup]="form" (ngSubmit)="add()">
+    <h2>Add</h2>
+
+    <mat-form-field class="form-input">
+        <input matInput
+               name="title"
+               formControlName="title"
+               type="title"
+               placeholder="title"
+               minlength="5" required>
+
+        <mat-error *ngIf="form.get('title').hasError('required')">
+            You must enter a value
+        </mat-error>
+
+        <mat-error *ngIf="form.get('title').hasError('minlength')">
+            Title must have more than 5 characters
+        </mat-error>
+
+    </mat-form-field>
+
+    <mat-form-field class="form-input">
+        <input matInput
+               name="description"
+               formControlName="description"
+               type="text"
+               placeholder="description">
+    </mat-form-field>
+
+    <mat-form-field class="form-input">
+        <textarea matInput
+                  name="text"
+                  formControlName="text"
+                  placeholder="Text">
+        </textarea>
+    </mat-form-field>
+
+    <p class="action text-center">
+        <button mat-button color="warn" [mat-dialog-close]="true">Close</button>
+        <button mat-button [disabled]="form.invalid">Add</button>
+    </p>
+</form>

@@ -1,9 +1,13 @@
 // Angular
 import { Component } from '@angular/core';
 
-// Services
+// Material
+import { MatDialog } from '@angular/material';
+
+// App
 import { ArticleService } from '../services/article.service';
 import { Article } from '../services/article.service';
+import { TextAddComponent } from './text-add/text-add.component';
 
 @Component({
     selector: 'app-texts',
@@ -11,17 +15,19 @@ import { Article } from '../services/article.service';
     styleUrls: ['./texts.component.css']
 })
 export class TextsComponent {
-    private newArticle: Article = {
-        title: 'title',
-        description: 'description',
-        text: 'text' ,
-    };
-
     public constructor(
         public article: ArticleService,
+        public dialog: MatDialog
     ) { }
 
     public addArticle(): void {
-        this.article.push(this.newArticle);
+        const dialogRef = this.dialog.open(TextAddComponent);
+
+        dialogRef.afterClosed().subscribe(
+            (article: Article) => {
+                if (article) {
+                    this.article.push(article);
+                }
+            });
     }
 }
