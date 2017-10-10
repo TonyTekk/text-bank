@@ -7,9 +7,6 @@ import { Validators } from '@angular/forms';
 // Material
 import { MatDialogRef } from '@angular/material';
 
-// App
-import { Article } from '../../services/article.service';
-
 @Component({
     selector: 'app-text-add',
     templateUrl: './text-add.component.html',
@@ -27,13 +24,11 @@ export class TextAddComponent {
     ) { }
 
     public add(): void {
-        const article: Article = {
+        this.dialogRef.close({
             title: this.form.controls.title.value,
             description: this.form.controls.description.value,
             text: this.form.controls.text.value,
-        };
-
-        this.dialogRef.close(article);
+        });
     }
 
     public onNoClick(): void {

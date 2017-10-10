@@ -21,6 +21,7 @@ import { MatDialog } from '@angular/material';
 import { ArticleService } from '../services/article.service';
 import { Article } from '../services/article.service';
 import { TextAddComponent } from './text-add/text-add.component';
+import { TextRemoveComponent } from './text-remove/text-remove.component';
 
 @Component({
     selector: 'app-texts',
@@ -51,7 +52,14 @@ export class TextsComponent implements OnInit {
     }
 
     public remove(id: string): void {
-        this.article.remove(id);
+        const dialogRef = this.dialog.open(TextRemoveComponent);
+
+        dialogRef.afterClosed().subscribe(
+            (article: Article) => {
+                if (article) {
+                    this.article.remove(id);
+                }
+            });
     }
 
     public ngOnInit(): void {
@@ -79,11 +87,7 @@ export class TableDatabase {
     public constructor(
         public article: ArticleService,
     ) {
-        this.article.list.subscribe(
-            (list) => {
-                console.log(list);
-                this.dataChange.next(list);
-            });
+        this.article.list.subscribe(list => this.dataChange.next(list));
     }
 }
 

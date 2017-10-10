@@ -20,6 +20,7 @@ import { TextsRoutingModule } from './texts-routing.module';
 import { TextsComponent } from './texts.component';
 import { ArticleService } from '../services/article.service';
 import { TextAddComponent } from './text-add/text-add.component';
+import { TextRemoveComponent } from './text-remove/text-remove.component';
 
 @NgModule({
     imports: [
@@ -37,9 +38,11 @@ import { TextAddComponent } from './text-add/text-add.component';
     declarations: [
         TextsComponent,
         TextAddComponent,
+        TextRemoveComponent,
     ],
     entryComponents: [
         TextAddComponent,
+        TextRemoveComponent,
     ],
     providers: [
         AngularFireDatabase,
