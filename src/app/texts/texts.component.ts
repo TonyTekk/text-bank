@@ -40,28 +40,6 @@ export class TextsComponent implements OnInit {
         public dialog: MatDialog
     ) { }
 
-    public add(): void {
-        const dialogRef = this.dialog.open(TextAddComponent);
-
-        dialogRef.afterClosed().subscribe(
-            (article: Article) => {
-                if (article) {
-                    this.article.push(article);
-                }
-            });
-    }
-
-    public remove(id: string): void {
-        const dialogRef = this.dialog.open(TextRemoveComponent);
-
-        dialogRef.afterClosed().subscribe(
-            (article: Article) => {
-                if (article) {
-                    this.article.remove(id);
-                }
-            });
-    }
-
     public ngOnInit(): void {
         this.database = new TableDatabase(this.article);
         this.dataSource = new TableDataSource(this.database);
@@ -72,6 +50,48 @@ export class TextsComponent implements OnInit {
             .subscribe(() => {
                 if (this.dataSource) {
                     this.dataSource.filter = this.filter.nativeElement.value;
+                }
+            });
+    }
+
+    public add(): void {
+        const dialogRef = this.dialog.open(TextAddComponent, {
+            data: {
+                id: null,
+                title: '',
+                description: '',
+                text: ''
+            }
+        });
+
+        dialogRef.afterClosed().subscribe(
+            (article: Article) => {
+                if (article) {
+                    this.article.push(article);
+                }
+            });
+    }
+
+    public edit(item: Article): void {
+        const dialogRef = this.dialog.open(TextAddComponent, {
+            data: item
+        });
+
+        dialogRef.afterClosed().subscribe(
+            (article: Article) => {
+                if (article) {
+                    this.article.update(article);
+                }
+            });
+    }
+
+    public remove(id: string): void {
+        const dialogRef = this.dialog.open(TextRemoveComponent);
+
+        dialogRef.afterClosed().subscribe(
+            (result: boolean) => {
+                if (result) {
+                    this.article.remove(id);
                 }
             });
     }

@@ -51,9 +51,15 @@ export class ArticleService {
         }
     }
 
-    public remove(item): void {
+    public update(item: Article): void {
         if (this.userId) {
-            this.db.list(`articles/${this.userId}`).remove(item);
+            this.db.object(`articles/${this.userId}/${item.id}`).set(item);
+        }
+    }
+
+    public remove(id: string): void {
+        if (this.userId) {
+            this.db.list(`articles/${this.userId}`).remove(id);
         }
     }
 }

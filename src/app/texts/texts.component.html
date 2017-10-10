@@ -7,7 +7,7 @@
             <mat-icon class="md-24">add</mat-icon>
         </button>
     </div>
-<div>
+
     <mat-table #table [dataSource]="dataSource">
 
         <ng-container matColumnDef="title">
@@ -28,7 +28,7 @@
         <ng-container matColumnDef="action">
             <mat-header-cell *matHeaderCellDef></mat-header-cell>
             <mat-cell class="text-right" *matCellDef="let row">
-                <button mat-icon-button>
+                <button mat-icon-button (click)="edit(row)">
                     <mat-icon class="md-24">mode_edit</mat-icon>
                 </button>
                 <button mat-icon-button (click)="remove(row.id)">
@@ -41,5 +41,4 @@
         <mat-row *matRowDef="let row; columns: columns;"></mat-row>
 
     </mat-table>
-</div>
 </div>

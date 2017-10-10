@@ -1,5 +1,5 @@
 <form [formGroup]="form" (ngSubmit)="add()">
-    <h2>Add</h2>
+    <h2>Add/Edit</h2>
 
     <mat-form-field class="form-input">
         <input matInput
@@ -37,6 +37,6 @@
 
     <p class="text-center">
         <button mat-button color="warn" [mat-dialog-close]="false">Close</button>
-        <button mat-button [disabled]="form.invalid">Add</button>
+        <button mat-button [disabled]="form.invalid">OK</button>
     </p>
 </form>
