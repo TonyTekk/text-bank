@@ -1,11 +1,32 @@
-<h1 class="text-center uppercase">texts</h1>
+<div class="table-container">
+    <div class="header">
+        <mat-form-field floatPlaceholder="never">
+            <input matInput #filter placeholder="Filter articles">
+        </mat-form-field>
+    </div>
 
-<ul>
-    <li *ngFor="let item of article.list | async">
-        {{ item | json }}
-    </li>
-</ul>
+    <mat-table #table [dataSource]="dataSource">
 
+        <ng-container matColumnDef="title">
+            <mat-header-cell *matHeaderCellDef> Title </mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.title}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="description">
+            <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.description}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="text">
+            <mat-header-cell *matHeaderCellDef> Text </mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.text | slice:0:50 }}...</mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: columns;"></mat-row>
+
+    </mat-table>
+</div>
 
 <div class="btn-add">
     <button mat-icon-button (click)="addArticle()" matTooltip="Add text" [matTooltipPosition]="'left'">

@@ -13,6 +13,7 @@ import { MatIconModule } from '@angular/material';
 import { MatTooltipModule } from '@angular/material';
 import { MatDialogModule } from '@angular/material';
 import { MatInputModule } from '@angular/material';
+import { MatTableModule } from '@angular/material';
 
 // App
 import { TextsRoutingModule } from './texts-routing.module';
@@ -31,6 +32,7 @@ import { TextAddComponent } from './text-add/text-add.component';
         MatTooltipModule,
         MatDialogModule,
         MatInputModule,
+        MatTableModule,
     ],
     declarations: [
         TextsComponent,
