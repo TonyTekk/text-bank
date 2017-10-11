@@ -70,7 +70,16 @@ export class ProjectsComponent  implements OnInit, OnDestroy {
     public ngOnDestroy(): void { }
 
     public add(): void {
-        this.project.push(new ProjectModel({}));
+        const dialogRef = this.dialog.open(ProjectUpdateComponent, {
+            data: new ProjectModel({})
+        });
+
+        dialogRef.afterClosed().subscribe(
+            (project: ProjectModel) => {
+                if (project) {
+                    this.project.push(project);
+                }
+            });
     }
 
     public edit(item: ProjectModel): void {
@@ -79,9 +88,9 @@ export class ProjectsComponent  implements OnInit, OnDestroy {
         });
 
         dialogRef.afterClosed().subscribe(
-            (article: ProjectModel) => {
-                if (article) {
-                    this.project.update(article);
+            (project: ProjectModel) => {
+                if (project) {
+                    this.project.update(project);
                 }
             });
     }

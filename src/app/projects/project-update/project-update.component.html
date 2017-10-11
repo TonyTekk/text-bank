@@ -19,18 +19,12 @@
         </mat-error>
     </mat-form-field>
 
-    <mat-form-field class="form-input">
+    <mat-form-field *ngIf="project.apiId !== ''" class="form-input">
         <input matInput
                name="apiId"
                formControlName="apiId"
                type="text"
-               placeholder="id"
-               required>
-
-        <mat-error *ngIf="form.get('apiId').hasError('required')">
-            You must enter a value
-        </mat-error>
-
+               placeholder="id">
     </mat-form-field>
 
     <p>
