@@ -35,7 +35,7 @@ export class ArticleService {
     }
 
     public get(id: string): any {
-        return this.db.object(`${this._item}/${this.userId}/${id}`).snapshotChanges()
+        return this.db.object(`${this._item}/${this.userId}/${id}`).valueChanges();
     }
 
     public push(item: ArticleModel): Promise<any> {
@@ -65,9 +65,14 @@ export class ArticleService {
         }
     }
 
-    public remove(item: ArticleModel) {
+    public remove(item: ArticleModel): Promise<any> {
         if (this.userId) {
-            this.db.list(`${this._item}/${this.userId}`).remove(item.id);
+            return new Promise((resolve, reject) => {
+            this.db.list(`${this._item}/${this.userId}`)
+                .remove(item.id)
+                .then(() => resolve())
+                .catch(() => reject());
+            });
         }
     }
 }

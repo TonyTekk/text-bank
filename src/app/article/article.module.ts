@@ -17,6 +17,7 @@ import { MatMenuModule } from '@angular/material';
 import { ArticleComponent } from './article.component';
 import { ArticleRoutingModule } from './article-routing.module';
 import { ArticleService } from '../services/article.service';
+import { ArticleRemoveComponent } from './article-remove/article-remove.component';
 
 @NgModule({
     imports: [
@@ -34,6 +35,10 @@ import { ArticleService } from '../services/article.service';
     ],
     declarations: [
         ArticleComponent,
+        ArticleRemoveComponent,
+    ],
+    entryComponents: [
+        ArticleRemoveComponent,
     ],
     providers: [
         ArticleService,

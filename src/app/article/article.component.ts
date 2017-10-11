@@ -8,20 +8,22 @@ import { OnDestroy} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 
+// Material
+import { MatDialog } from '@angular/material';
+
 // Animation
 import { trigger } from '@angular/animations';
 import { style } from '@angular/animations';
 import { animate } from '@angular/animations';
-import { state } from '@angular/animations';
 import { transition } from '@angular/animations';
 
 // RxJs
 import { Subscription } from 'rxjs/Subscription';
-import { Observable } from 'rxjs/Observable';
 
 // App
 import { ArticleService } from '../services/article.service';
 import { ArticleModel } from '../models/article.model';
+import { ArticleRemoveComponent } from './article-remove/article-remove.component';
 
 @Component({
     selector: 'app-article',
@@ -49,6 +51,7 @@ export class ArticleComponent implements OnInit, OnDestroy {
     public constructor(
         private router: Router,
         private route: ActivatedRoute,
+        public dialog: MatDialog,
         public articleService: ArticleService,
     ) { }
 
@@ -63,14 +66,18 @@ export class ArticleComponent implements OnInit, OnDestroy {
             .subscribe(params => {
                 if (params['articleId']) {
                     this.articleSubscription = this.articleService.get(params['articleId'])
-                        .subscribe((action) => {
-                            this.article = new ArticleModel(action.payload.val());
+                        .subscribe((article) => {
+                            if (article) {
+                                this.article = new ArticleModel(article);
 
-                            this.form = new FormGroup({
-                                title      : new FormControl(this.article.title, [Validators.required, Validators.minLength(5)]),
-                                description: new FormControl(this.article.description),
-                                text       : new FormControl(this.article.text),
-                            });
+                                this.form = new FormGroup({
+                                    title      : new FormControl(this.article.title, [Validators.required, Validators.minLength(5)]),
+                                    description: new FormControl(this.article.description),
+                                    text       : new FormControl(this.article.text),
+                                });
+                            } else {
+                                this.toTexts();
+                            }
                         });
                 }
             });
@@ -94,18 +101,31 @@ export class ArticleComponent implements OnInit, OnDestroy {
     }
 
 
-    private push(article): any {
+    public push(article): void {
         this.articleService.push(article)
             .then(() => {
-                this.router.navigate(['/texts']);
+                this.toTexts();
             });
     }
 
-    private update(article): any {
+    public update(article): void {
         this.articleService.update(article)
             .then(() => {
-                this.router.navigate(['/texts']);
+                this.toTexts();
             });
+    }
+
+    public remove(): void {
+        if (this.article) {
+            const dialogRef = this.dialog.open(ArticleRemoveComponent, {});
+
+            dialogRef.afterClosed().subscribe(
+                (result: boolean) => {
+                    if (result) {
+                        this.articleService.remove(this.article);
+                    }
+                });
+        }
     }
 
     public toTexts(): void {

@@ -1,6 +1,11 @@
-<form [@init]="!init" [formGroup]="form" (ngSubmit)="submit()">
+<div class="header">
     <h2>Article</h2>
 
+    <button *ngIf="article" mat-icon-button (click)="remove()" matTooltip="Remove" color="warn" [matTooltipPosition]="'below'">
+        <mat-icon class="md-24">close</mat-icon>
+    </button>
+</div>
+<form [@init]="!init" [formGroup]="form" (ngSubmit)="submit()">
     <mat-form-field class="form-input">
         <input matInput
                name="title"
