@@ -3,23 +3,23 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { Routes } from '@angular/router';
 
-import { TextsComponent } from './texts.component';
+import { ProjectsComponent } from './projects.component';
 import { AuthGuard } from '../services/auth-guard.service';
 
-const textsRoutes: Routes = [
+const projectsRoutes: Routes = [
     {
         path: '',
-        component: TextsComponent,
+        component: ProjectsComponent,
         canActivate: [AuthGuard],
     }
 ];
 
 @NgModule({
     imports: [
-        RouterModule.forChild(textsRoutes)
+        RouterModule.forChild(projectsRoutes)
     ],
     exports: [
         RouterModule
     ]
 })
-export class TextsRoutingModule {}
+export class ProjectsRoutingModule {}

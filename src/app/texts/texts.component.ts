@@ -80,9 +80,10 @@ export class TextsComponent implements OnInit, OnDestroy {
         this.database = new TableDatabase(this.article);
         this.dataSource = new TableDataSource(this.database);
 
-        this.subscription = this.article.list.subscribe(() => {
-            this.update = true;
-        });
+        this.subscription = this.article.list
+            .subscribe(() => {
+                this.update = true;
+            });
 
         Observable.fromEvent(this.filter.nativeElement, 'keyup')
             .debounceTime(150)

@@ -13,12 +13,17 @@ const appRoutes: Routes = [
         canLoad: [AuthGuard],
     },
     {
+        path: 'projects',
+        loadChildren: 'app/projects/projects.module#ProjectsModule',
+        canLoad: [AuthGuard],
+    },
+    {
         path: 'login',
         loadChildren: 'app/login/login.module#LoginModule',
     },
     {
         path: '**',
-        redirectTo: '/texts',
+        redirectTo: '/projects',
     }
 ];
 

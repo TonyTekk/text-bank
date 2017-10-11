@@ -28,7 +28,7 @@ export class AuthService {
             .then((value) => {
                 console.log('Sing up with: ', value);
 
-                this.router.navigate(['/texts']);
+                this.router.navigate(['/projects']);
             })
             .catch((err) => {
                 console.warn('Something went wrong with sing up:', err);
@@ -45,7 +45,7 @@ export class AuthService {
             .then((value) => {
                 console.log('Logged in: ', value);
 
-                this.router.navigate(['/texts']);
+                this.router.navigate(['/projects']);
             })
             .catch((err) => {
                 console.warn('Something went wrong with login:', err);
