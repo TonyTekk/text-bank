@@ -2,6 +2,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
 
 // Firebase
 import { AngularFireModule } from 'angularfire2';
@@ -12,6 +13,8 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { MatButtonModule } from '@angular/material';
 import { MatIconModule } from '@angular/material';
 import { MatTooltipModule } from '@angular/material';
+import { MatIconRegistry } from '@angular/material';
+import { MatMenuModule } from '@angular/material';
 
 // App
 import { AppRoutingModule } from './app-routing.module';
@@ -24,12 +27,14 @@ import { environment } from '../environments/environment';
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
+        HttpModule,
         AppRoutingModule,
         AngularFireModule.initializeApp(environment.firebase),
         AngularFireAuthModule,
         MatButtonModule,
         MatIconModule,
         MatTooltipModule,
+        MatMenuModule,
     ],
     declarations: [
         AppComponent,
@@ -38,6 +43,7 @@ import { environment } from '../environments/environment';
         AuthService,
         AuthGuard,
         AngularFireDatabase,
+        MatIconRegistry,
     ],
     bootstrap: [
         AppComponent,

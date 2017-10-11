@@ -1,25 +1,21 @@
 <div class="header" *ngIf="authService.user | async">
-    <button mat-icon-button (click)="logout()" matTooltip="Logout" [matTooltipPosition]="'below'">
-        <mat-icon class="md-24">close</mat-icon>
-    </button>
-
-    <span>{{this.title}}</span>
-
-    <button mat-icon-button
-            matTooltip="Articles"
-            [routerLink]="['texts']"
-            [routerLinkActive]="'is-active : not-active'"
-            [matTooltipPosition]="'left'">
-        <mat-icon class="md-24">reorder</mat-icon>
-    </button>
+    <mat-icon svgIcon="chest"></mat-icon>
+    <span class="title">{{this.title  | slice:1:25}}</span>
 
     <button mat-icon-button
             matTooltip="Projects"
-            [matTooltipPosition]="'left'"
             [routerLink]="['projects']"
             [routerLinkActive]="'is-active : not-active'">
         <mat-icon class="md-24">folder</mat-icon>
     </button>
+
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon class="md-24">menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu" xPosition="before">
+        <button mat-menu-item (click)="logout()">Logout</button>
+    </mat-menu>
+
 </div>
 
 <router-outlet></router-outlet>

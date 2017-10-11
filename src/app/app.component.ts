@@ -4,6 +4,10 @@ import { OnInit } from '@angular/core';
 import { Router  } from '@angular/router';
 import { NavigationEnd } from '@angular/router';
 import { OnDestroy} from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
+
+// Material
+import { MatIconRegistry } from '@angular/material';
 
 // RxJs
 import { Subscription } from 'rxjs/Subscription';
@@ -21,9 +25,15 @@ export class AppComponent implements OnInit, OnDestroy {
     public title: string;
 
     public constructor(
+        private router: Router,
+        public iconRegistry: MatIconRegistry,
+        public sanitizer: DomSanitizer,
         public authService: AuthService,
-        private router: Router
-    ) {}
+    ) {
+        iconRegistry
+            .addSvgIcon('chest',
+                sanitizer.bypassSecurityTrustResourceUrl('./assets/img/chest.svg'));
+    }
 
     public ngOnInit() {
         this.subscription = this.router.events
