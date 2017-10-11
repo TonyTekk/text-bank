@@ -37,6 +37,7 @@
                    placeholder="password"
                    [formControl]="password"
                    (input)="changeInput()"
+                   (keyup.enter)="login()"
                    minlength="5" required>
 
             <mat-error *ngIf="password.hasError('required')">
@@ -86,6 +87,7 @@
                    placeholder="password"
                    [formControl]="password"
                    (input)="changeInput()"
+                   (keyup.enter)="signUp()"
                    minlength="5" required>
 
             <mat-error *ngIf="password.hasError('required')">
