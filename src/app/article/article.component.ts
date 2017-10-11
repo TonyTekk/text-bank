@@ -53,25 +53,26 @@ export class ArticleComponent implements OnInit, OnDestroy {
     ) { }
 
     public form = new FormGroup({
-        title      : new FormControl(),
-        description: new FormControl(),
-        text       : new FormControl(),
+        title      : new FormControl('', [Validators.required, Validators.minLength(5)]),
+        description: new FormControl(''),
+        text       : new FormControl(''),
     });
 
     public ngOnInit(): void {
         this.paramsSubscription = this.route.params
             .subscribe(params => {
+                if (params['articleId']) {
+                    this.articleSubscription = this.articleService.get(params['articleId'])
+                        .subscribe((action) => {
+                            this.article = new ArticleModel(action.payload.val());
 
-                this.articleSubscription = this.articleService.get(params['id'])
-                    .subscribe((action) => {
-                        this.article = new ArticleModel(action.payload.val());
-
-                        this.form = new FormGroup({
-                            title      : new FormControl(this.article.title, [Validators.required, Validators.minLength(5)]),
-                            description: new FormControl(this.article.description),
-                            text       : new FormControl(this.article.text),
+                            this.form = new FormGroup({
+                                title      : new FormControl(this.article.title, [Validators.required, Validators.minLength(5)]),
+                                description: new FormControl(this.article.description),
+                                text       : new FormControl(this.article.text),
+                            });
                         });
-                    });
+                }
             });
     }
 
@@ -81,14 +82,26 @@ export class ArticleComponent implements OnInit, OnDestroy {
 
     public submit(): void {
         const article = {
-            id: this.article.id,
-            apiId: this.article.apiId,
-            projectId: this.article.projectId,
+            id: this.article ? this.article.id : '',
+            apiId: this.article ? this.article.apiId : '',
+            projectId: this.article ? this.article.projectId : '',
             title: this.form.controls.title.value,
             description: this.form.controls.description.value,
             text: this.form.controls.text.value,
         };
 
+        this.article ? this.update(article) : this.push(article);
+    }
+
+
+    private push(article): any {
+        this.articleService.push(article)
+            .then(() => {
+                this.router.navigate(['/texts']);
+            });
+    }
+
+    private update(article): any {
         this.articleService.update(article)
             .then(() => {
                 this.router.navigate(['/texts']);

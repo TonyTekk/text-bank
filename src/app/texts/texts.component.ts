@@ -98,6 +98,10 @@ export class TextsComponent implements OnInit, OnDestroy {
         this.keySubscription.unsubscribe();
     }
 
+    public create(): void {
+        this.router.navigate(['/article']);
+    }
+
     public toArticle(article: ArticleModel): void {
         this.router.navigate(['/article/' + article.id]);
     }
