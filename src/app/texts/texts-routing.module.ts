@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { Routes } from '@angular/router';
 
+// App
 import { TextsComponent } from './texts.component';
 import { AuthGuard } from '../services/auth-guard.service';
 

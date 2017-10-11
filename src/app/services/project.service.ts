@@ -10,14 +10,14 @@ import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs/Observable';
 
 // App
-import { ArticleModel } from '../models/article.model';
+import { ProjectModel } from '../models/project.model';
 
 @Injectable()
-export class ArticleService {
-    private _item = 'articles';
+export class ProjectService {
+    private _item = 'projects';
 
     private userId: string = null;
-    public list: Observable<ArticleModel[]> = null;
+    public list: Observable<ProjectModel[]> = null;
 
     public constructor(
         private db: AngularFireDatabase,
@@ -29,12 +29,12 @@ export class ArticleService {
                     this.userId = user.uid;
 
                     this.list = this.db.list(`${this._item}/${this.userId}`).snapshotChanges()
-                        .map(actions => actions.map(item => new ArticleModel(item.payload.val())));
+                        .map(actions => actions.map(item => new ProjectModel(item.payload.val())));
                 }
             });
     }
 
-    public push(item: ArticleModel): void {
+    public push(item: ProjectModel): void {
         if (this.userId) {
             // Generate a reference to a new location and add some data using push()
             const ref = this.db.list(`${this._item}/${this.userId}`).push({});
@@ -45,13 +45,13 @@ export class ArticleService {
         }
     }
 
-    public update(item: ArticleModel): void {
+    public update(item: ProjectModel): void {
         if (this.userId) {
-            this.db.object(`${this._item}/${this.userId}/${item.id}`).set(new ArticleModel(item));
+            this.db.object(`${this._item}/${this.userId}/${item.id}`).set(new ProjectModel(item));
         }
     }
 
-    public remove(item: ArticleModel): void {
+    public remove(item: ProjectModel): void {
         if (this.userId) {
             this.db.list(`${this._item}/${this.userId}`).remove(item.id);
         }

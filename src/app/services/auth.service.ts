@@ -23,7 +23,8 @@ export class AuthService {
 
     public signUp(email: string, password: string): void {
         this.error = 'Sign up form temporary not available';
-/*
+
+        /* Remove comments to available sign up method
         this.auth.auth.createUserWithEmailAndPassword(email, password)
             .then((value) => {
                 console.log('Sing up with: ', value);
@@ -35,7 +36,7 @@ export class AuthService {
 
                 this.error = err.message;
             });
-*/
+        */
     }
 
     public login(email: string, password: string): void {

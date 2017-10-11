@@ -4,9 +4,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 
-// Firebase
-import { AngularFireDatabase } from 'angularfire2/database';
-
 // Material
 import { MatButtonModule } from '@angular/material';
 import { MatIconModule } from '@angular/material';
@@ -47,7 +44,6 @@ import { TextRemoveComponent } from './text-remove/text-remove.component';
         TextRemoveComponent,
     ],
     providers: [
-        AngularFireDatabase,
         ArticleService,
     ],
 })

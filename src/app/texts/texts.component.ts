@@ -57,8 +57,9 @@ import { TextRemoveComponent } from './text-remove/text-remove.component';
     ],
 })
 export class TextsComponent implements OnInit, OnDestroy {
-    // Subscribe to list
-    private subscription: Subscription;
+    // Subscription
+    private listSubscription: Subscription;
+    private keySubscription: Subscription;
 
     // Animation triggers
     public init = false;
@@ -69,6 +70,7 @@ export class TextsComponent implements OnInit, OnDestroy {
     public database: TableDatabase;
     public dataSource: TableDataSource | null;
 
+    // DOM
     @ViewChild('filter') public filter: ElementRef;
 
     public constructor(
@@ -80,12 +82,12 @@ export class TextsComponent implements OnInit, OnDestroy {
         this.database = new TableDatabase(this.article);
         this.dataSource = new TableDataSource(this.database);
 
-        this.subscription = this.article.list
+        this.listSubscription = this.article.list
             .subscribe(() => {
                 this.update = true;
             });
 
-        Observable.fromEvent(this.filter.nativeElement, 'keyup')
+        this.keySubscription = Observable.fromEvent(this.filter.nativeElement, 'keyup')
             .debounceTime(150)
             .distinctUntilChanged()
             .subscribe(() => {
@@ -96,7 +98,8 @@ export class TextsComponent implements OnInit, OnDestroy {
     }
 
     public ngOnDestroy(): void {
-        this.subscription.unsubscribe();
+        this.listSubscription.unsubscribe();
+        this.keySubscription.unsubscribe();
     }
 
     public add(): void {
@@ -162,7 +165,9 @@ export class TableDataSource extends DataSource<any> {
         this.filterChange.next(filter);
     }
 
-    public constructor(private database: TableDatabase) {
+    public constructor(
+        private database: TableDatabase
+    ) {
         super();
     }
 

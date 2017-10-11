@@ -6,6 +6,7 @@ import { NgModule } from '@angular/core';
 // Firebase
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 // Material
 import { MatButtonModule } from '@angular/material';
@@ -36,6 +37,7 @@ import { environment } from '../environments/environment';
     providers: [
         AuthService,
         AuthGuard,
+        AngularFireDatabase,
     ],
     bootstrap: [
         AppComponent,

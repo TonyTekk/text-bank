@@ -5,12 +5,12 @@ export class ArticleModel {
     public description: string;
     public text: string;
 
-    public constructor(article) {
-        article.id ? this.id = article.id : this.id = '';
-        article.progectId ? this.projectId = article.progectId : this.projectId = '';
+    public constructor(item: any) {
+        item.id ? this.id = item.id : this.id = '';
+        item.progectId ? this.projectId = item.progectId : this.projectId = '';
 
-        article.title ? this.title = article.title : this.title = '';
-        article.description ? this.description = article.description : this.description = '';
-        article.text ? this.text = article.text : this.text = '';
+        item.title ? this.title = item.title : this.title = '';
+        item.description ? this.description = item.description : this.description = '';
+        item.text ? this.text = item.text : this.text = '';
     }
 }

@@ -17,7 +17,7 @@ import { AuthService } from './services/auth.service';
     styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit, OnDestroy {
-    private routerSubscription: Subscription;
+    private subscription: Subscription;
     public title: string;
 
     public constructor(
@@ -26,7 +26,7 @@ export class AppComponent implements OnInit, OnDestroy {
     ) {}
 
     public ngOnInit() {
-        this.routerSubscription = this.router.events
+        this.subscription = this.router.events
             .subscribe(event => {
                 if (event instanceof NavigationEnd) {
                     this.title = event.url;
@@ -35,7 +35,7 @@ export class AppComponent implements OnInit, OnDestroy {
     }
 
     public ngOnDestroy(): void {
-        this.routerSubscription.unsubscribe();
+        this.subscription.unsubscribe();
     }
 
     public logout(): void {

@@ -10,6 +10,10 @@ import { style } from '@angular/animations';
 import { animate } from '@angular/animations';
 import { transition } from '@angular/animations';
 
+// App
+import { ProjectService } from '../services/project.service';
+import { ProjectModel } from '../models/project.model';
+
 @Component({
     selector: 'app-projects',
     templateUrl: './projects.component.html',
@@ -29,12 +33,15 @@ export class ProjectsComponent  implements OnInit, OnDestroy {
 
     public constructor(
         private router: Router,
+        public projectService: ProjectService,
     ) {}
 
     public ngOnInit(): void {}
     public ngOnDestroy(): void { }
 
-    public add(): void {}
+    public add(): void {
+        this.projectService.push(new ProjectModel({}));
+    }
 
     public remove(): void {
         console.log('sasd');

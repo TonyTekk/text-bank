@@ -12,6 +12,7 @@ import { MatInputModule } from '@angular/material';
 // App
 import { ProjectsComponent } from './projects.component';
 import { ProjectsRoutingModule } from './projects-routing.module';
+import { ProjectService } from '../services/project.service';
 
 @NgModule({
     imports: [
@@ -24,7 +25,10 @@ import { ProjectsRoutingModule } from './projects-routing.module';
         MatInputModule,
     ],
     declarations: [
-        ProjectsComponent
+        ProjectsComponent,
+    ],
+    providers: [
+        ProjectService,
     ],
 })
 export class ProjectsModule { }
