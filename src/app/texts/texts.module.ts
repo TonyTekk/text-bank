@@ -17,7 +17,6 @@ import { MatMenuModule } from '@angular/material';
 import { TextsRoutingModule } from './texts-routing.module';
 import { TextsComponent } from './texts.component';
 import { ArticleService } from '../services/article.service';
-import { TextUpdateComponent } from './text-update/text-update.component';
 import { TextRemoveComponent } from './text-remove/text-remove.component';
 
 @NgModule({
@@ -36,11 +35,9 @@ import { TextRemoveComponent } from './text-remove/text-remove.component';
     ],
     declarations: [
         TextsComponent,
-        TextUpdateComponent,
         TextRemoveComponent,
     ],
     entryComponents: [
-        TextUpdateComponent,
         TextRemoveComponent,
     ],
     providers: [

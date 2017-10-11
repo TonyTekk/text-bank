@@ -5,9 +5,7 @@ import { ViewChild } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { OnDestroy} from '@angular/core';
 import { DataSource } from '@angular/cdk/collections';
-
-// Material
-import { MatDialog } from '@angular/material';
+import { Router } from '@angular/router';
 
 // Animation
 import { trigger } from '@angular/animations';
@@ -29,8 +27,6 @@ import 'rxjs/add/observable/fromEvent';
 // App
 import { ArticleService } from '../services/article.service';
 import { ArticleModel } from '../models/article.model';
-import { TextUpdateComponent } from './text-update/text-update.component';
-import { TextRemoveComponent } from './text-remove/text-remove.component';
 
 @Component({
     selector: 'app-texts',
@@ -74,8 +70,8 @@ export class TextsComponent implements OnInit, OnDestroy {
     @ViewChild('filter') public filter: ElementRef;
 
     public constructor(
+        private router: Router,
         public article: ArticleService,
-        public dialog: MatDialog
     ) { }
 
     public ngOnInit(): void {
@@ -102,41 +98,8 @@ export class TextsComponent implements OnInit, OnDestroy {
         this.keySubscription.unsubscribe();
     }
 
-    public add(): void {
-        const dialogRef = this.dialog.open(TextUpdateComponent, {
-            data: new ArticleModel({})
-        });
-
-        dialogRef.afterClosed().subscribe(
-            (article: ArticleModel) => {
-                if (article) {
-                    this.article.push(article);
-                }
-            });
-    }
-
-    public edit(item: ArticleModel): void {
-        const dialogRef = this.dialog.open(TextUpdateComponent, {
-            data: item
-        });
-
-        dialogRef.afterClosed().subscribe(
-            (article: ArticleModel) => {
-                if (article) {
-                    this.article.update(article);
-                }
-            });
-    }
-
-    public remove(article: ArticleModel): void {
-        const dialogRef = this.dialog.open(TextRemoveComponent);
-
-        dialogRef.afterClosed().subscribe(
-            (result: boolean) => {
-                if (result) {
-                    this.article.remove(article);
-                }
-            });
+    public toArticle(article: ArticleModel): void {
+        this.router.navigate(['/article/' + article.id]);
     }
 }
 

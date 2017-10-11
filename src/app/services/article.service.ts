@@ -34,6 +34,10 @@ export class ArticleService {
             });
     }
 
+    public get(id: string): any {
+        return this.db.object(`${this._item}/${this.userId}/${id}`).snapshotChanges()
+    }
+
     public push(item: ArticleModel): void {
         if (this.userId) {
             // Generate a reference to a new location and add some data using push()
@@ -45,9 +49,14 @@ export class ArticleService {
         }
     }
 
-    public update(item: ArticleModel): void {
+    public update(item: ArticleModel): any {
         if (this.userId) {
-            this.db.object(`${this._item}/${this.userId}/${item.id}`).set(new ArticleModel(item));
+            return new Promise((resolve, reject) => {
+                this.db.object(`${this._item}/${this.userId}/${item.id}`)
+                    .set(new ArticleModel(item))
+                    .then(() => resolve())
+                    .catch(() => reject());
+            });
         }
     }
 

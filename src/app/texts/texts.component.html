@@ -29,13 +29,10 @@
         <ng-container matColumnDef="action">
             <mat-header-cell class="action" *matHeaderCellDef></mat-header-cell>
             <mat-cell class="action text-right" *matCellDef="let row">
-                <button mat-icon-button [matMenuTriggerFor]="menu">
-                    <mat-icon class="md-24">more_vert</mat-icon>
+                <button mat-icon-button (click)="toArticle(row)">
+                    <mat-icon class="md-24">edit</mat-icon>
                 </button>
-                <mat-menu #menu="matMenu" xPosition="before">
-                    <button mat-menu-item (click)="edit(row)">Edit</button>
-                    <button mat-menu-item (click)="remove(row)" class="warn">Remove</button>
-                </mat-menu>
+
             </mat-cell>
         </ng-container>
 
