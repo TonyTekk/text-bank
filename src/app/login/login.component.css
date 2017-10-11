@@ -35,6 +35,10 @@
     margin-top: 32px;
 }
 
+.btn-switch /deep/ .mat-button-focus-overlay {
+    background-color:transparent;
+}
+
 @media(max-width:767px){
     .form {
         margin: auto;

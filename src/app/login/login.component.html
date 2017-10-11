@@ -1,7 +1,7 @@
 <!-- Toggle button -->
 <div class="header" *ngIf="!(authService.user | async)">
     <span></span>
-    <button mat-button (click)="toggleState()" [ngSwitch]="toggle">
+    <button mat-button class="btn-switch" (click)="toggleState()" [ngSwitch]="toggle">
         <span *ngSwitchCase="false">sign up</span>
         <span *ngSwitchCase="true" >login</span>
     </button>
