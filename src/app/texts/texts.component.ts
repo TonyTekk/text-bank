@@ -3,11 +3,20 @@ import { Component } from '@angular/core';
 import { ElementRef } from '@angular/core';
 import { ViewChild } from '@angular/core';
 import { OnInit } from '@angular/core';
+import { OnDestroy} from '@angular/core';
 import { DataSource } from '@angular/cdk/collections';
+
+// Animation
+import { trigger } from '@angular/animations';
+import { style } from '@angular/animations';
+import { animate } from '@angular/animations';
+import { state } from '@angular/animations';
+import { transition } from '@angular/animations';
 
 // RxJs
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
+import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/observable/merge';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/debounceTime';
@@ -26,9 +35,36 @@ import { TextRemoveComponent } from './text-remove/text-remove.component';
 @Component({
     selector: 'app-texts',
     templateUrl: './texts.component.html',
-    styleUrls: ['./texts.component.css']
+    styleUrls: ['./texts.component.css'],
+    animations: [
+        trigger('init', [
+            transition('* => *', [
+                style({transform: 'translateX(-100%)'}),
+                animate(300)
+            ]),
+        ]),
+        trigger('update', [
+            state('true', style({
+                opacity: 0
+            })),
+            state('false',   style({
+                opacity: 1
+            })),
+            transition('* => *', [
+                animate(300)
+            ]),
+        ])
+    ],
 })
-export class TextsComponent implements OnInit {
+export class TextsComponent implements OnInit, OnDestroy {
+    // Subscribe to list
+    private subscription: Subscription;
+
+    // Animation triggers
+    public init = false;
+    public update = false;
+
+    // Table data
     public columns = ['title', 'text', 'action'];
     public database: TableDatabase;
     public dataSource: TableDataSource | null;
@@ -44,6 +80,10 @@ export class TextsComponent implements OnInit {
         this.database = new TableDatabase(this.article);
         this.dataSource = new TableDataSource(this.database);
 
+        this.subscription = this.article.list.subscribe(() => {
+            this.update = true;
+        });
+
         Observable.fromEvent(this.filter.nativeElement, 'keyup')
             .debounceTime(150)
             .distinctUntilChanged()
@@ -52,6 +92,10 @@ export class TextsComponent implements OnInit {
                     this.dataSource.filter = this.filter.nativeElement.value;
                 }
             });
+    }
+
+    public ngOnDestroy(): void {
+        this.subscription.unsubscribe();
     }
 
     public add(): void {

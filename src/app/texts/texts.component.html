@@ -1,4 +1,4 @@
-<div class="table-container">
+<div [@init]="!init" class="table-container">
     <div class="header">
         <mat-form-field floatPlaceholder="never">
             <input matInput #filter placeholder="Filter articles">
@@ -9,7 +9,7 @@
         </button>
     </div>
 
-    <mat-table #table [dataSource]="dataSource">
+    <mat-table [@update]="!update" #table [dataSource]="dataSource">
 
         <ng-container matColumnDef="title">
             <mat-header-cell class="title" *matHeaderCellDef> Title </mat-header-cell>
