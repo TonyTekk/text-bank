@@ -28,4 +28,8 @@ export class ProjectsComponent  implements OnInit, OnDestroy {
 
     public ngOnInit(): void {}
     public ngOnDestroy(): void { }
+
+    public add(): void {
+
+    }
 }
