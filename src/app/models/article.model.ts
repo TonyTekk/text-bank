@@ -1,5 +1,6 @@
 export class ArticleModel {
     public id: string;
+    public apiId: string;
     public projectId: string;
     public title: string;
     public description: string;
@@ -7,6 +8,12 @@ export class ArticleModel {
 
     public constructor(item: any) {
         item.id ? this.id = item.id : this.id = '';
+        item.apiId ? this.apiId = item.apiId : this.apiId = this.id;
+
+        if (item.apiId === '' && item.id !== '') {
+            this.apiId = this.id;
+        }
+
         item.progectId ? this.projectId = item.progectId : this.projectId = '';
 
         item.title ? this.title = item.title : this.title = '';

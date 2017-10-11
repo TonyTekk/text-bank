@@ -1,11 +1,18 @@
 export class ProjectModel {
     public id: string;
+    public apiId: string;
     public title: string;
     public color: string;
 
     public constructor(item: any) {
         item.id ? this.id = item.id : this.id = '';
-        item.title ? this.title = item.title : this.title = 'default';
+        item.apiId ? this.apiId = item.apiId : this.apiId = this.id;
+
+        if (item.apiId === '' && item.id !== '') {
+            this.apiId = this.id;
+        }
+
+        item.title ? this.title = item.title : this.title = 'Default Title';
         item.color ? this.color = item.color : this.color = ProjectModel.generateColor();
     }
 
