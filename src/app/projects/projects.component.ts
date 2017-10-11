@@ -8,7 +8,11 @@ import { Router } from '@angular/router';
 import { trigger } from '@angular/animations';
 import { style } from '@angular/animations';
 import { animate } from '@angular/animations';
+import { state } from '@angular/animations';
 import { transition } from '@angular/animations';
+
+// RxJs
+import { Subscription } from 'rxjs/Subscription';
 
 // App
 import { ProjectService } from '../services/project.service';
@@ -25,22 +29,42 @@ import { ProjectModel } from '../models/project.model';
                 animate(300)
             ]),
         ]),
+        trigger('update', [
+            state('true', style({
+                opacity: 0
+            })),
+            state('false',   style({
+                opacity: 1
+            })),
+            transition('* => *', [
+                animate(300)
+            ]),
+        ]),
     ],
 })
 export class ProjectsComponent  implements OnInit, OnDestroy {
+    // Subscription
+    private listSubscription: Subscription;
+
     // Animation triggers
     public init = false;
+    public update = false;
 
     public constructor(
         private router: Router,
-        public projectService: ProjectService,
+        public project: ProjectService,
     ) {}
 
-    public ngOnInit(): void {}
+    public ngOnInit(): void {
+        this.listSubscription = this.project.list
+            .subscribe(() => {
+                this.update = true;
+            });
+    }
     public ngOnDestroy(): void { }
 
     public add(): void {
-        this.projectService.push(new ProjectModel({}));
+        this.project.push(new ProjectModel({}));
     }
 
     public remove(): void {
