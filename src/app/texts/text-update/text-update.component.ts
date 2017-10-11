@@ -32,6 +32,7 @@ export class TextUpdateComponent {
     public update(): void {
         const article = new ArticleModel({
             id: this.article.id,
+            apiId: this.article.apiId,
             projectId: this.article.projectId,
             title: this.form.controls.title.value,
             description: this.form.controls.description.value,

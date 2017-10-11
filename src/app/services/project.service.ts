@@ -47,6 +47,8 @@ export class ProjectService {
 
     public update(item: ProjectModel): void {
         if (this.userId) {
+
+            console.log(item);
             this.db.object(`${this._item}/${this.userId}/${item.id}`).set(new ProjectModel(item));
         }
     }

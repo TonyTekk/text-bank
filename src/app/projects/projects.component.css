@@ -29,6 +29,7 @@ mat-grid-tile {
 }
 
 .edit {
+    padding: 16px;
     cursor: pointer;
 }
 
@@ -36,4 +37,23 @@ mat-grid-tile {
     position: absolute;
     top: 0;
     right: 0;
+}
+
+.key {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 16px;
+    font-size: 90%;
+    color: rgba(0, 0, 0, 0.54);
+}
+
+@media(max-width:767px){
+    .edit {
+        font-size: 100%;
+    }
+
+    .key {
+        display: none;
+    }
 }

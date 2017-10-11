@@ -9,8 +9,10 @@
         </button>
     </div>
 
-    <mat-grid-list cols="2" rowHeight="2:1">
+    <mat-grid-list cols="2" rowHeight="1:1">
         <mat-grid-tile *ngFor="let item of project.list | async" [ngStyle]="{'background': item.color}">
+            <div class="key">key: {{item.apiId}}</div>
+
             <button mat-icon-button class="btn-remove" [matMenuTriggerFor]="menu">
                 <mat-icon class="md-24">more_vert</mat-icon>
             </button>

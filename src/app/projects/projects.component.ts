@@ -21,6 +21,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { ProjectService } from '../services/project.service';
 import { ProjectModel } from '../models/project.model';
 import { ProjectRemoveComponent } from './project-remove/project-remove.component';
+import { ProjectUpdateComponent } from './project-update/project-update.component';
 
 @Component({
     selector: 'app-projects',
@@ -72,8 +73,17 @@ export class ProjectsComponent  implements OnInit, OnDestroy {
         this.project.push(new ProjectModel({}));
     }
 
-    public edit(): void {
+    public edit(item: ProjectModel): void {
+        const dialogRef = this.dialog.open(ProjectUpdateComponent, {
+            data: item
+        });
 
+        dialogRef.afterClosed().subscribe(
+            (article: ProjectModel) => {
+                if (article) {
+                    this.project.update(article);
+                }
+            });
     }
 
     public remove(item: ProjectModel): void {
