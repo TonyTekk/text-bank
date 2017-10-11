@@ -4,6 +4,9 @@ import { OnInit } from '@angular/core';
 import { OnDestroy} from '@angular/core';
 import { Router } from '@angular/router';
 
+// Material
+import { MatDialog } from '@angular/material';
+
 // Animation
 import { trigger } from '@angular/animations';
 import { style } from '@angular/animations';
@@ -17,6 +20,7 @@ import { Subscription } from 'rxjs/Subscription';
 // App
 import { ProjectService } from '../services/project.service';
 import { ProjectModel } from '../models/project.model';
+import { ProjectRemoveComponent } from './project-remove/project-remove.component';
 
 @Component({
     selector: 'app-projects',
@@ -52,6 +56,7 @@ export class ProjectsComponent  implements OnInit, OnDestroy {
 
     public constructor(
         private router: Router,
+        public dialog: MatDialog,
         public project: ProjectService,
     ) {}
 
@@ -67,8 +72,21 @@ export class ProjectsComponent  implements OnInit, OnDestroy {
         this.project.push(new ProjectModel({}));
     }
 
-    public remove(): void {
-        console.log('sasd');
+    public edit(): void {
+
+    }
+
+    public remove(item: ProjectModel): void {
+        const dialogRef = this.dialog.open(ProjectRemoveComponent, {
+            data: item
+        });
+
+        dialogRef.afterClosed().subscribe(
+            (result: boolean) => {
+                if (result) {
+                    this.project.remove(item);
+                }
+            });
     }
 
     public toArticle(): void {

@@ -1,7 +1,7 @@
 export class ProjectModel {
     public id: string;
     public apiId: string;
-    public title: string;
+    public name: string;
     public color: string;
 
     public constructor(item: any) {
@@ -12,7 +12,7 @@ export class ProjectModel {
             this.apiId = this.id;
         }
 
-        item.title ? this.title = item.title : this.title = 'Default Title';
+        item.title ? this.name = item.title : this.name = 'Default Name';
         item.color ? this.color = item.color : this.color = ProjectModel.generateColor();
     }
 

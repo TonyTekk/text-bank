@@ -6,6 +6,9 @@ import { OnInit } from '@angular/core';
 import { OnDestroy} from '@angular/core';
 import { DataSource } from '@angular/cdk/collections';
 
+// Material
+import { MatDialog } from '@angular/material';
+
 // Animation
 import { trigger } from '@angular/animations';
 import { style } from '@angular/animations';
@@ -22,9 +25,6 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/observable/fromEvent';
-
-// Material
-import { MatDialog } from '@angular/material';
 
 // App
 import { ArticleService } from '../services/article.service';

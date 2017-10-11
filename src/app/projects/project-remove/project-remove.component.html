@@ -1,0 +1,21 @@
+<h2>Remove</h2>
+
+<mat-form-field class="form-input">
+    <input matInput
+           name="projectName"
+           type="text"
+           placeholder="Type project name"
+           [formControl]="projectName"
+           required>
+
+    <mat-error *ngIf="projectName.hasError('required')">
+        You must enter a value
+    </mat-error>
+</mat-form-field>
+
+<p>
+    <button mat-button color="warn"
+            [mat-dialog-close]="true"
+            [disabled]="projectName.invalid || projectName.value !== project.name">Remove</button>
+    <button mat-button color="primary" [mat-dialog-close]="false">Close</button>
+</p>
