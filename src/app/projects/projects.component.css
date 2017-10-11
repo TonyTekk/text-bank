@@ -27,3 +27,13 @@ mat-form-field {
 mat-grid-tile {
     background: rgba(0, 0, 0, 0.12);
 }
+
+.edit {
+    cursor: pointer;
+}
+
+.btn-remove {
+    position: absolute;
+    top: 0;
+    right: 0;
+}

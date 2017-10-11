@@ -2,6 +2,7 @@
 import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { OnDestroy} from '@angular/core';
+import { Router } from '@angular/router';
 
 // Animation
 import { trigger } from '@angular/animations';
@@ -26,10 +27,20 @@ export class ProjectsComponent  implements OnInit, OnDestroy {
     // Animation triggers
     public init = false;
 
+    public constructor(
+        private router: Router,
+    ) {}
+
     public ngOnInit(): void {}
     public ngOnDestroy(): void { }
 
-    public add(): void {
+    public add(): void {}
 
+    public remove(): void {
+        console.log('sasd');
+    }
+
+    public toArticle(): void {
+        this.router.navigate(['/texts']);
     }
 }
