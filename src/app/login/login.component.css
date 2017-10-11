@@ -1,3 +1,13 @@
+.header {
+    display: flex;
+    align-items: center;
+    min-height: 48px;
+}
+
+.header span {
+    flex: 1;
+}
+
 .form-container {
     display: flex;
     height: 90vh;

@@ -5,3 +5,13 @@
     margin: auto;
     border-right: 1px solid rgba(0, 0, 0, 0.12);
 }
+
+.header {
+    display: flex;
+    align-items: center;
+    min-height: 48px;
+}
+
+.header span {
+    flex: 1;
+}

@@ -1,8 +1,9 @@
 <!-- Toggle button -->
-<div class="text-right" *ngIf="!(authService.user | async)">
-    <button mat-icon-button (click)="toggleState()" [ngSwitch]="toggle">
-        <mat-icon class="md-24" *ngSwitchCase="true"   matTooltip="Login"   [matTooltipPosition]="'left'">arrow_downward</mat-icon>
-        <mat-icon class="md-24" *ngSwitchCase="false"  matTooltip="Sing up" [matTooltipPosition]="'left'">add</mat-icon>
+<div class="header" *ngIf="!(authService.user | async)">
+    <span></span>
+    <button mat-button (click)="toggleState()" [ngSwitch]="toggle">
+        <span *ngSwitchCase="false">sing up</span>
+        <span *ngSwitchCase="true" >login</span>
     </button>
 </div>
 
@@ -58,7 +59,7 @@
 <!-- Sing Up Form -->
 <div *ngIf="toggle" [@toggleState]="toggle" class="form-container">
     <div class="form">
-        <h2>Sing Up</h2>
+        <h2>Sign Up</h2>
 
         <mat-form-field class="form-input">
             <input matInput
@@ -99,7 +100,7 @@
         <mat-error class="error" *ngIf="authService.error">{{authService.error}}</mat-error>
 
         <p class="action">
-            <button mat-button (click)="signUp()" [disabled]="email.invalid || password.invalid">Sing Up</button>
+            <button mat-button (click)="signUp()" [disabled]="email.invalid || password.invalid">Sign Up</button>
         </p>
     </div>
 </div>
