@@ -12,7 +12,7 @@ export class ProjectModel {
             this.apiId = this.id;
         }
 
-        item.name ? this.name = item.name : this.name = 'Default Name';
+        item.name ? this.name = item.name : this.name = 'Default Project Name';
         item.color ? this.color = item.color : this.color = ProjectModel.generateColor();
     }
 
