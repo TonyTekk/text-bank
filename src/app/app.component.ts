@@ -30,9 +30,8 @@ export class AppComponent implements OnInit, OnDestroy {
         public sanitizer: DomSanitizer,
         public authService: AuthService,
     ) {
-        iconRegistry
-            .addSvgIcon('chest',
-                sanitizer.bypassSecurityTrustResourceUrl('./assets/img/chest.svg'));
+        this.iconRegistry
+            .addSvgIcon('chest', sanitizer.bypassSecurityTrustResourceUrl('./assets/img/chest.svg'));
     }
 
     public ngOnInit() {
