@@ -10,7 +10,7 @@
 
 .form-container {
     display: flex;
-    height: 90vh;
+    height: calc(100vh - 80px);
 }
 
 .form {

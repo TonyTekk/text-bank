@@ -1,14 +1,14 @@
+<div class="header">
+    <mat-form-field floatPlaceholder="never">
+        <input matInput #filter placeholder="Filter projects">
+    </mat-form-field>
+
+    <button mat-icon-button (click)="add()" matTooltip="Add project" [matTooltipPosition]="'below'">
+        <mat-icon class="md-24">add</mat-icon>
+    </button>
+</div>
+
 <div class="grid-container">
-    <div class="header">
-        <mat-form-field floatPlaceholder="never">
-            <input matInput #filter placeholder="Filter projects">
-        </mat-form-field>
-
-        <button mat-icon-button (click)="add()" matTooltip="Add project" [matTooltipPosition]="'below'">
-            <mat-icon class="md-24">add</mat-icon>
-        </button>
-    </div>
-
     <mat-grid-list [@update]="!update" cols="2" rowHeight="1:1">
         <mat-grid-tile *ngFor="let item of project.list | async" [ngStyle]="{'background': item.color}">
             <div class="key">key: {{item.apiId}}</div>
