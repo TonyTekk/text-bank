@@ -9,31 +9,31 @@ import { AuthGuard } from './services/auth-guard.service';
 const appRoutes: Routes = [
     {
         path: 'projects',
-        loadChildren: 'app/projects/projects.module#ProjectsModule',
+        loadChildren: 'app/modules/projects/projects.module#ProjectsModule',
         canLoad: [AuthGuard],
     },
     {
         path: 'articles',
-        loadChildren: 'app/articles/articles.module#ArticlesModule',
+        loadChildren: 'app/modules/articles/articles.module#ArticlesModule',
         canLoad: [AuthGuard],
     },
     {
         path: 'article',
-        loadChildren: 'app/article/article.module#ArticleModule',
+        loadChildren: 'app/modules/article/article.module#ArticleModule',
         canLoad: [AuthGuard],
     },
     {
         path: 'article/:articleId',
-        loadChildren: 'app/article/article.module#ArticleModule',
+        loadChildren: 'app/modules/article/article.module#ArticleModule',
         canLoad: [AuthGuard],
     },
     {
         path: 'login',
-        loadChildren: 'app/login/login.module#LoginModule',
+        loadChildren: 'app/modules/login/login.module#LoginModule',
     },
     {
-        path: 'signup',
-        loadChildren: 'app/signup/sign-up.module#SignUpModule',
+        path: 'sign-up',
+        loadChildren: 'app/modules/sign-up/sign-up.module#SignUpModule',
     },
     {
         path: '**',

@@ -5,11 +5,13 @@ import { Routes } from '@angular/router';
 
 // App
 import { ArticleComponent } from './article.component';
+import { AuthGuard } from '../../services/auth-guard.service';
 
 const articleRoutes: Routes = [
     {
         path: '',
         component: ArticleComponent,
+        canActivate: [AuthGuard],
     }
 ];
 

@@ -10,12 +10,12 @@ import { animate } from '@angular/animations';
 import { transition } from '@angular/animations';
 
 // Services
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
-    selector: 'app-sign-up',
-    templateUrl: './sign-up.component.html',
-    styleUrls: ['./sign-up.component.css'],
+    selector: 'app-login',
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.css'],
     animations: [
         trigger('toggle', [
             transition('* => *', [
@@ -25,7 +25,7 @@ import { AuthService } from '../services/auth.service';
         ])
     ],
 })
-export class SignUpComponent {
+export class LoginComponent {
     public email     = new FormControl('', [Validators.required, Validators.email]);
     public password  = new FormControl('', [Validators.required, Validators.minLength(5)]);
 
@@ -35,8 +35,8 @@ export class SignUpComponent {
         public authService: AuthService,
     ) {}
 
-    public signUp(): void {
-        this.authService.signUp(this.email.value, this.password.value);
+    public login(): void {
+        this.authService.login(this.email.value, this.password.value);
     }
 
     public changeInput(): void {

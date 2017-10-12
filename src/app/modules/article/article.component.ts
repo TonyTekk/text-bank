@@ -21,8 +21,8 @@ import { transition } from '@angular/animations';
 import { Subscription } from 'rxjs/Subscription';
 
 // App
-import { ArticleService } from '../services/article.service';
-import { ArticleModel } from '../models/article.model';
+import { ArticleService } from '../../services/article.service';
+import { ArticleModel } from '../../models/article.model';
 import { ArticleRemoveComponent } from './article-remove/article-remove.component';
 
 @Component({

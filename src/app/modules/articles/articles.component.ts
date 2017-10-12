@@ -25,8 +25,8 @@ import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/observable/fromEvent';
 
 // App
-import { ArticleService } from '../services/article.service';
-import { ArticleModel } from '../models/article.model';
+import { ArticleService } from '../../services/article.service';
+import { ArticleModel } from '../../models/article.model';
 
 @Component({
     selector: 'app-articles',

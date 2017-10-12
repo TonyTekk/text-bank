@@ -16,7 +16,7 @@ import { MatMenuModule } from '@angular/material';
 // App
 import { ArticlesRoutingModule } from './articles-routing.module';
 import { ArticlesComponent } from './articles.component';
-import { ArticleService } from '../services/article.service';
+import { ArticleService } from '../../services/article.service';
 
 @NgModule({
     imports: [

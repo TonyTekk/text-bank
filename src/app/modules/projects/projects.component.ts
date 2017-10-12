@@ -18,8 +18,8 @@ import { transition } from '@angular/animations';
 import { Subscription } from 'rxjs/Subscription';
 
 // App
-import { ProjectService } from '../services/project.service';
-import { ProjectModel } from '../models/project.model';
+import { ProjectService } from '../../services/project.service';
+import { ProjectModel } from '../../models/project.model';
 import { ProjectRemoveComponent } from './project-remove/project-remove.component';
 import { ProjectUpdateComponent } from './project-update/project-update.component';
 

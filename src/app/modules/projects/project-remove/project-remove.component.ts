@@ -8,7 +8,7 @@ import { Inject} from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material';
 
 // App
-import { ProjectModel } from '../../models/project.model';
+import { ProjectModel } from '../../../models/project.model';
 
 @Component({
   selector: 'app-project-remove',

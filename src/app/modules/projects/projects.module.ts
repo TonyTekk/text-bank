@@ -16,7 +16,7 @@ import { MatMenuModule } from '@angular/material';
 // App
 import { ProjectsComponent } from './projects.component';
 import { ProjectsRoutingModule } from './projects-routing.module';
-import { ProjectService } from '../services/project.service';
+import { ProjectService } from '../../services/project.service';
 import { ProjectUpdateComponent } from './project-update/project-update.component';
 import { ProjectRemoveComponent } from './project-remove/project-remove.component';
 
