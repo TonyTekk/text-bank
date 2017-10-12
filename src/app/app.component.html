@@ -1,5 +1,6 @@
 <div class="header">
     <mat-icon svgIcon="chest"></mat-icon>
+
     <span class="title">{{this.title  | slice:1:25}}</span>
 
     <div *ngIf="authService.user | async">
@@ -16,6 +17,19 @@
         <mat-menu #menu="matMenu" xPosition="before">
             <button mat-menu-item (click)="logout()">Logout</button>
         </mat-menu>
+    </div>
+
+    <div *ngIf="!(authService.user | async)" >
+        <button mat-button
+                [routerLink]="['login']"
+                [routerLinkActive]="'is-active : not-active'">
+            login
+        </button>
+        <button mat-button
+                [routerLink]="['signup']"
+                [routerLinkActive]="'is-active : not-active'">
+            sign up
+        </button>
     </div>
 </div>
 

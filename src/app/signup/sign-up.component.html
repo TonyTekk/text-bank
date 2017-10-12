@@ -1,6 +1,6 @@
 <div class="form-container" *ngIf="!toggle" [@toggle]="!toggle">
     <div class="form">
-        <h2>Login</h2>
+        <h2>Sign Up</h2>
 
         <mat-form-field class="form-input">
             <input matInput
@@ -27,7 +27,7 @@
                    placeholder="password"
                    [formControl]="password"
                    (input)="changeInput()"
-                   (keyup.enter)="login()"
+                   (keyup.enter)="signUp()"
                    minlength="5" required>
 
             <mat-error *ngIf="password.hasError('required')">
@@ -42,7 +42,7 @@
         <mat-error class="error" *ngIf="authService.error">{{authService.error}}</mat-error>
 
         <p class="action">
-            <button mat-button  (click)="login()" [disabled]="email.invalid || password.invalid">Login</button>
+            <button mat-button (click)="signUp()" [disabled]="email.invalid || password.invalid">Sign Up</button>
         </p>
     </div>
 </div>

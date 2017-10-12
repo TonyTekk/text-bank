@@ -32,6 +32,10 @@ const appRoutes: Routes = [
         loadChildren: 'app/login/login.module#LoginModule',
     },
     {
+        path: 'signup',
+        loadChildren: 'app/signup/sign-up.module#SignUpModule',
+    },
+    {
         path: '**',
         redirectTo: '/projects',
     }
