@@ -45,7 +45,7 @@
     </mat-form-field>
 
     <p>
-        <button type="submit" mat-button [disabled]="form.invalid">OK</button>
         <button type="button" mat-button color="warn" *ngIf="article" (click)="remove()">Delete</button>
+        <button type="submit" mat-button [disabled]="form.invalid">OK</button>
     </p>
 </form>
