@@ -28,12 +28,6 @@ import { ProjectUpdateComponent } from './project-update/project-update.componen
     templateUrl: './projects.component.html',
     styleUrls: ['./projects.component.css'],
     animations: [
-        trigger('init', [
-            transition('* => *', [
-                style({transform: 'translateX(-100%)'}),
-                animate(300)
-            ]),
-        ]),
         trigger('update', [
             state('true', style({
                 opacity: 0
@@ -51,8 +45,7 @@ export class ProjectsComponent  implements OnInit, OnDestroy {
     // Subscription
     private listSubscription: Subscription;
 
-    // Animation triggers
-    public init = false;
+    // Animation trigger
     public update = false;
 
     public constructor(

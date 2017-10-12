@@ -28,6 +28,10 @@ mat-grid-tile {
     background: rgba(0, 0, 0, 0.12);
 }
 
+mat-grid-list {
+    opacity: 0;
+}
+
 .edit {
     padding: 16px;
     cursor: pointer;

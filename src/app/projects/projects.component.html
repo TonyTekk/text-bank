@@ -1,4 +1,4 @@
-<div [@init]="!init" class="grid-container">
+<div class="grid-container">
     <div class="header">
         <mat-form-field floatPlaceholder="never">
             <input matInput #filter placeholder="Filter projects">
@@ -9,7 +9,7 @@
         </button>
     </div>
 
-    <mat-grid-list cols="2" rowHeight="1:1">
+    <mat-grid-list [@update]="!update" cols="2" rowHeight="1:1">
         <mat-grid-tile *ngFor="let item of project.list | async" [ngStyle]="{'background': item.color}">
             <div class="key">key: {{item.apiId}}</div>
 

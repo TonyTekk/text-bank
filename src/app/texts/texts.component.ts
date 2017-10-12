@@ -33,12 +33,6 @@ import { ArticleModel } from '../models/article.model';
     templateUrl: './texts.component.html',
     styleUrls: ['./texts.component.css'],
     animations: [
-        trigger('init', [
-            transition('* => *', [
-                style({transform: 'translateX(-100%)'}),
-                animate(300)
-            ]),
-        ]),
         trigger('update', [
             state('true', style({
                 opacity: 0
@@ -57,8 +51,7 @@ export class TextsComponent implements OnInit, OnDestroy {
     private listSubscription: Subscription;
     private keySubscription: Subscription;
 
-    // Animation triggers
-    public init = false;
+    // Animation trigger
     public update = false;
 
     // Table data
