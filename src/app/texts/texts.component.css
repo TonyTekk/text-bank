@@ -1,9 +1,8 @@
-.table-container {
+:host {
     display: flex;
     flex-direction: column;
-    margin: auto;
     width: 100%;
-    height: calc(100vh - 80px);
+    height: 100%
 }
 
 .header {
@@ -14,16 +13,17 @@
     justify-content: space-between;
 }
 
-.mat-form-field {
-    flex-grow: 1;
-   /* margin-left: 32px; */
+.mat-table {
+    overflow: auto;
+    height: 100%;
 }
 
-.mat-table {
-    width: 100%;
-    overflow: auto;
-    max-height: 1000px;
+mat-table {
     opacity: 0;
+}
+
+mat-form-field {
+    width: 100%;
 }
 
 .action {

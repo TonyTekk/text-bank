@@ -1,16 +1,13 @@
-<!-- Toggle button -->
-<div class="header" *ngIf="!(authService.user | async)">
-    <mat-icon svgIcon="chest"></mat-icon>
-    <span></span>
-
-    <button mat-button class="btn-switch" (click)="toggleState()" [ngSwitch]="toggle">
-        <span *ngSwitchCase="false">sign up</span>
+<!--
+<div *ngIf="!(authService.user | async)" >
+   <button mat-button class="btn-switch" (click)="toggleState()" [ngSwitch]="toggle">
+       <span *ngSwitchCase="false">sign up</span>
         <span *ngSwitchCase="true" >login</span>
     </button>
 </div>
-
+-->
 <!-- Login Form -->
-<div *ngIf="!toggle" [@toggleState]="!toggle" class="form-container">
+<div class="form-container" *ngIf="!toggle" [@toggleState]="!toggle">
     <div class="form">
         <h2>Login</h2>
 

@@ -1,43 +1,38 @@
-<div class="table-container">
-    <div class="header">
-        <mat-form-field floatPlaceholder="never">
-            <input matInput #filter placeholder="Filter articles">
-        </mat-form-field>
+<div class="header">
+    <mat-form-field floatPlaceholder="never">
+        <input matInput #filter placeholder="Filter articles">
+    </mat-form-field>
 
-        <button mat-icon-button (click)="create()" matTooltip="Add text" [matTooltipPosition]="'below'">
-            <mat-icon class="md-24">add</mat-icon>
-        </button>
-    </div>
-
-    <mat-table [@update]="!update" #table [dataSource]="dataSource">
-
-        <ng-container matColumnDef="title">
-            <mat-header-cell class="title" *matHeaderCellDef> Title </mat-header-cell>
-            <mat-cell class="title" *matCellDef="let row">
-                <div class="title-description">{{row.title}}</div>
-                <div class="description">{{row.description}}</div>
-            </mat-cell>
-        </ng-container>
-
-        <ng-container matColumnDef="text">
-            <mat-header-cell class="text" *matHeaderCellDef> Text </mat-header-cell>
-            <mat-cell class="text" *matCellDef="let row">
-                <div class="text-description"> {{row.text | slice:0:156 }}...</div>
-            </mat-cell>
-        </ng-container>
-
-        <ng-container matColumnDef="action">
-            <mat-header-cell class="action" *matHeaderCellDef></mat-header-cell>
-            <mat-cell class="action text-right" *matCellDef="let row">
-                <button mat-icon-button (click)="toArticle(row)">
-                    <mat-icon class="md-24">edit</mat-icon>
-                </button>
-
-            </mat-cell>
-        </ng-container>
-
-        <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: columns;"></mat-row>
-
-    </mat-table>
+    <button mat-icon-button (click)="create()" matTooltip="Add text" [matTooltipPosition]="'below'">
+        <mat-icon class="md-24">add</mat-icon>
+    </button>
 </div>
+
+<mat-table class="table-container" [@update]="!update" #table [dataSource]="dataSource">
+    <ng-container matColumnDef="title">
+        <mat-header-cell class="title" *matHeaderCellDef> Title </mat-header-cell>
+        <mat-cell class="title" *matCellDef="let row">
+            <div class="title-description">{{row.title}}</div>
+            <div class="description">{{row.description}}</div>
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="text">
+        <mat-header-cell class="text" *matHeaderCellDef> Text </mat-header-cell>
+        <mat-cell class="text" *matCellDef="let row">
+            <div class="text-description"> {{row.text | slice:0:156 }}...</div>
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+        <mat-header-cell class="action" *matHeaderCellDef></mat-header-cell>
+        <mat-cell class="action text-right" *matCellDef="let row">
+            <button mat-icon-button (click)="toArticle(row)">
+                <mat-icon class="md-24">edit</mat-icon>
+            </button>
+        </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: columns;"></mat-row>
+</mat-table>

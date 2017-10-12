@@ -1,20 +1,24 @@
-<div class="header" *ngIf="authService.user | async">
+<div class="header">
     <mat-icon svgIcon="chest"></mat-icon>
     <span class="title">{{this.title  | slice:1:25}}</span>
 
-    <button mat-icon-button
-            matTooltip="Projects"
-            [routerLink]="['projects']"
-            [routerLinkActive]="'is-active : not-active'">
-        <mat-icon class="md-24">folder</mat-icon>
-    </button>
+    <div *ngIf="authService.user | async">
+        <button mat-icon-button
+                matTooltip="Projects"
+                [routerLink]="['projects']"
+                [routerLinkActive]="'is-active : not-active'">
+            <mat-icon class="md-24">folder</mat-icon>
+        </button>
 
-    <button mat-icon-button [matMenuTriggerFor]="menu">
-        <mat-icon class="md-24">menu</mat-icon>
-    </button>
-    <mat-menu #menu="matMenu" xPosition="before">
-        <button mat-menu-item (click)="logout()">Logout</button>
-    </mat-menu>
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon class="md-24">menu</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu" xPosition="before">
+            <button mat-menu-item (click)="logout()">Logout</button>
+        </mat-menu>
+    </div>
 </div>
 
-<router-outlet></router-outlet>
+<div class="container">
+    <router-outlet></router-outlet>
+</div>
