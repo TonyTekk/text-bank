@@ -20,8 +20,7 @@
 .header .title {
     flex: 1;
     padding-left: 16px;
-    font-size: 12px;
-    color: rgba(0, 0, 0, 0.54);
+    /*color: rgba(0, 0, 0, 0.54);*/
 }
 
 .is-active {
@@ -30,4 +29,10 @@
 
 .not-active {
     display: none;
+}
+
+@media(max-width:767px){
+    .header .title {
+        font-size: 12px;
+    }
 }
