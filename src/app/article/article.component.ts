@@ -75,8 +75,6 @@ export class ArticleComponent implements OnInit, OnDestroy {
                                     description: new FormControl(this.article.description),
                                     text       : new FormControl(this.article.text),
                                 });
-                            } else {
-                                this.toTexts();
                             }
                         });
                 }
@@ -122,7 +120,10 @@ export class ArticleComponent implements OnInit, OnDestroy {
             dialogRef.afterClosed().subscribe(
                 (result: boolean) => {
                     if (result) {
-                        this.articleService.remove(this.article);
+                        this.articleService.remove(this.article)
+                            .then(() => {
+                                this.toTexts();
+                            });
                     }
                 });
         }
