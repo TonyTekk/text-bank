@@ -102,14 +102,14 @@ export class ArticleComponent implements OnInit, OnDestroy {
     public push(article): void {
         this.articleService.push(article)
             .then(() => {
-                this.toTexts();
+                this.toArticles();
             });
     }
 
     public update(article): void {
         this.articleService.update(article)
             .then(() => {
-                this.toTexts();
+                this.toArticles();
             });
     }
 
@@ -122,14 +122,14 @@ export class ArticleComponent implements OnInit, OnDestroy {
                     if (result) {
                         this.articleService.remove(this.article)
                             .then(() => {
-                                this.toTexts();
+                                this.toArticles();
                             });
                     }
                 });
         }
     }
 
-    public toTexts(): void {
-        this.router.navigate(['/texts']);
+    public toArticles(): void {
+        this.router.navigate(['/articles']);
     }
 }

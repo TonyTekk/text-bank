@@ -4,23 +4,23 @@ import { RouterModule } from '@angular/router';
 import { Routes } from '@angular/router';
 
 // App
-import { TextsComponent } from './texts.component';
+import { ArticlesComponent } from './articles.component';
 import { AuthGuard } from '../services/auth-guard.service';
 
-const textsRoutes: Routes = [
+const articlesRoutes: Routes = [
     {
         path: '',
-        component: TextsComponent,
+        component: ArticlesComponent,
         canActivate: [AuthGuard],
     }
 ];
 
 @NgModule({
     imports: [
-        RouterModule.forChild(textsRoutes)
+        RouterModule.forChild(articlesRoutes)
     ],
     exports: [
         RouterModule
     ]
 })
-export class TextsRoutingModule {}
+export class ArticlesRoutingModule {}

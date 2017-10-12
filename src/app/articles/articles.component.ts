@@ -29,9 +29,9 @@ import { ArticleService } from '../services/article.service';
 import { ArticleModel } from '../models/article.model';
 
 @Component({
-    selector: 'app-texts',
-    templateUrl: './texts.component.html',
-    styleUrls: ['./texts.component.css'],
+    selector: 'app-articles',
+    templateUrl: './articles.component.html',
+    styleUrls: ['./articles.component.css'],
     animations: [
         trigger('update', [
             state('true', style({
@@ -46,7 +46,7 @@ import { ArticleModel } from '../models/article.model';
         ])
     ],
 })
-export class TextsComponent implements OnInit, OnDestroy {
+export class ArticlesComponent implements OnInit, OnDestroy {
     // Subscription
     private listSubscription: Subscription;
     private keySubscription: Subscription;

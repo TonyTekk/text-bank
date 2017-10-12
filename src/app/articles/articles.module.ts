@@ -14,14 +14,14 @@ import { MatTableModule } from '@angular/material';
 import { MatMenuModule } from '@angular/material';
 
 // App
-import { TextsRoutingModule } from './texts-routing.module';
-import { TextsComponent } from './texts.component';
+import { ArticlesRoutingModule } from './articles-routing.module';
+import { ArticlesComponent } from './articles.component';
 import { ArticleService } from '../services/article.service';
 
 @NgModule({
     imports: [
         CommonModule,
-        TextsRoutingModule,
+        ArticlesRoutingModule,
         FormsModule,
         ReactiveFormsModule,
         MatButtonModule,
@@ -33,10 +33,10 @@ import { ArticleService } from '../services/article.service';
         MatMenuModule,
     ],
     declarations: [
-        TextsComponent,
+        ArticlesComponent,
     ],
     providers: [
         ArticleService,
     ],
 })
-export class TextsModule { }
+export class ArticlesModule { }
