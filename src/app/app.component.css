@@ -20,14 +20,10 @@
 .header .title {
     flex: 1;
     padding-left: 16px;
-    /*color: rgba(0, 0, 0, 0.54);*/
+    color: rgba(0, 0, 0, 0.54);
 }
 
 .is-active {
-    display: block;
-}
-
-.not-active {
     display: none;
 }
 

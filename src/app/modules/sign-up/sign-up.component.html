@@ -1,4 +1,4 @@
-<div class="form-container" *ngIf="!toggle" [@toggle]="!toggle">
+<div *ngIf="!toggle" [@toggle]="!toggle">
     <div class="form">
         <h2>Sign Up</h2>
 
@@ -39,9 +39,11 @@
             </mat-error>
         </mat-form-field>
 
-        <mat-error class="error" *ngIf="authService.error">{{authService.error}}</mat-error>
+        <p *ngIf="authService.error">
+            <mat-error class="error" >{{authService.error}}</mat-error>
+        </p>
 
-        <p class="action">
+        <p *ngIf="!authService.error">
             <button mat-button (click)="signUp()" [disabled]="email.invalid || password.invalid">Sign Up</button>
         </p>
     </div>

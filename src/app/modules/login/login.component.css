@@ -5,11 +5,6 @@
     height: 100%;
 }
 
-.form-container {
-    overflow: auto;
-    min-height: 100%;
-}
-
 .form {
     width: 250px;
     margin-left: auto;
@@ -28,12 +23,8 @@
     font-size: 75%;
 }
 
-.action {
-    margin-top: 32px;
-}
-
 @media(max-width:767px){
     .form {
-        margin-top: 50px;
+        margin: auto;
     }
 }

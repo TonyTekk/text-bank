@@ -5,9 +5,9 @@
 
     <div *ngIf="authService.user | async">
         <button mat-icon-button
-                matTooltip="Projects"
-                [routerLink]="['projects']"
-                [routerLinkActive]="'is-active : not-active'">
+                routerLink="/projects"
+                routerLinkActive="is-active"
+                matTooltip="Projects">
             <mat-icon class="md-24">folder</mat-icon>
         </button>
 
@@ -20,16 +20,8 @@
     </div>
 
     <div *ngIf="!(authService.user | async)" >
-        <button mat-button
-                [routerLink]="['login']"
-                [routerLinkActive]="'is-active : not-active'">
-            login
-        </button>
-        <button mat-button
-                [routerLink]="['sign-up']"
-                [routerLinkActive]="'is-active : not-active'">
-            sign up
-        </button>
+        <a mat-button routerLink="/login" routerLinkActive="is-active">login</a>
+        <a mat-button routerLink="/sign-up" routerLinkActive="is-active">sign up</a>
     </div>
 </div>
 
