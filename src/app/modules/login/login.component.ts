@@ -27,7 +27,7 @@ import { AuthService } from '../../services/auth.service';
 })
 export class LoginComponent {
     public email     = new FormControl('', [Validators.required, Validators.email]);
-    public password  = new FormControl('', [Validators.required, Validators.minLength(5)]);
+    public password  = new FormControl('', [Validators.required]);
 
     public toggle = false;
 

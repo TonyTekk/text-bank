@@ -2,7 +2,7 @@
     <div class="form">
         <h2>Login</h2>
 
-        <mat-form-field class="form-input">
+        <mat-form-field>
             <input matInput
                    name="email"
                    type="email"
@@ -20,7 +20,7 @@
             </mat-error>
         </mat-form-field>
 
-        <mat-form-field class="form-input">
+        <mat-form-field>
             <input matInput
                    name="password"
                    type="password"
@@ -32,10 +32,6 @@
 
             <mat-error *ngIf="password.hasError('required')">
                 You must enter a value
-            </mat-error>
-
-            <mat-error *ngIf="password.hasError('minlength')">
-                Password must have more than 5 characters
             </mat-error>
         </mat-form-field>
 

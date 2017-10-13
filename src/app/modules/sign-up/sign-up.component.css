@@ -12,14 +12,11 @@
     margin-top: 150px;
 }
 
-.form-input {
+mat-form-field {
     width: 100%;
 }
 
 .error {
-    position: absolute;
-    width: 250px;
-    overflow: hidden;
     font-size: 75%;
 }
 
