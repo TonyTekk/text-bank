@@ -14,15 +14,22 @@ import { Subscription } from 'rxjs/Subscription';
 
 // Services
 import { AuthService } from './services/auth.service';
+import { FadeInAnimation } from './animations/fade-in.animation';
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
-    styleUrls: ['./app.component.css']
+    styleUrls: ['./app.component.css'],
+    animations: [
+        FadeInAnimation,
+    ],
 })
 export class AppComponent implements OnInit, OnDestroy {
     private subscription: Subscription;
     public title: string;
+
+    // Animation trigger
+    public update = false;
 
     public constructor(
         private router: Router,
@@ -38,6 +45,7 @@ export class AppComponent implements OnInit, OnDestroy {
         this.subscription = this.router.events
             .subscribe(event => {
                 if (event instanceof NavigationEnd) {
+                    this.update = true;
                     this.title = event.url;
                 }
             });
