@@ -9,7 +9,7 @@
 </div>
 
 <div class="grid-container">
-    <mat-grid-list [@update]="!update" cols="2" rowHeight="1:1">
+    <mat-grid-list [@fade-in]="update" cols="2" rowHeight="1:1">
         <mat-grid-tile *ngFor="let item of project.list | async" [ngStyle]="{'background': item.color}">
             <div class="key">key: {{item.apiId}}</div>
 

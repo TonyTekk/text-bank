@@ -7,13 +7,6 @@ import { OnDestroy} from '@angular/core';
 import { DataSource } from '@angular/cdk/collections';
 import { Router } from '@angular/router';
 
-// Animation
-import { trigger } from '@angular/animations';
-import { style } from '@angular/animations';
-import { animate } from '@angular/animations';
-import { state } from '@angular/animations';
-import { transition } from '@angular/animations';
-
 // RxJs
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
@@ -27,23 +20,14 @@ import 'rxjs/add/observable/fromEvent';
 // App
 import { ArticleService } from '../../services/article.service';
 import { ArticleModel } from '../../models/article.model';
+import { FadeInAnimation } from '../../animations/fade-in.animation';
 
 @Component({
     selector: 'app-articles',
     templateUrl: './articles.component.html',
     styleUrls: ['./articles.component.css'],
     animations: [
-        trigger('update', [
-            state('true', style({
-                opacity: 0
-            })),
-            state('false',   style({
-                opacity: 1
-            })),
-            transition('* => *', [
-                animate(300)
-            ]),
-        ])
+        FadeInAnimation,
     ],
 })
 export class ArticlesComponent implements OnInit, OnDestroy {

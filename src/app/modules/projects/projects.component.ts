@@ -7,13 +7,6 @@ import { Router } from '@angular/router';
 // Material
 import { MatDialog } from '@angular/material';
 
-// Animation
-import { trigger } from '@angular/animations';
-import { style } from '@angular/animations';
-import { animate } from '@angular/animations';
-import { state } from '@angular/animations';
-import { transition } from '@angular/animations';
-
 // RxJs
 import { Subscription } from 'rxjs/Subscription';
 
@@ -22,23 +15,14 @@ import { ProjectService } from '../../services/project.service';
 import { ProjectModel } from '../../models/project.model';
 import { ProjectRemoveComponent } from './project-remove/project-remove.component';
 import { ProjectUpdateComponent } from './project-update/project-update.component';
+import { FadeInAnimation } from '../../animations/fade-in.animation';
 
 @Component({
     selector: 'app-projects',
     templateUrl: './projects.component.html',
     styleUrls: ['./projects.component.css'],
     animations: [
-        trigger('update', [
-            state('true', style({
-                opacity: 0
-            })),
-            state('false',   style({
-                opacity: 1
-            })),
-            transition('* => *', [
-                animate(300)
-            ]),
-        ]),
+        FadeInAnimation,
     ],
 })
 export class ProjectsComponent  implements OnInit, OnDestroy {
