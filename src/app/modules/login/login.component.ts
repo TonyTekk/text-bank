@@ -3,33 +3,21 @@ import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
 
-// Animation
-import { trigger } from '@angular/animations';
-import { style } from '@angular/animations';
-import { animate } from '@angular/animations';
-import { transition } from '@angular/animations';
-
-// Services
+// App
 import { AuthService } from '../../services/auth.service';
+import { FlyInAnimation } from '../../animations/fly-in.animation';
 
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.css'],
     animations: [
-        trigger('toggle', [
-            transition('* => *', [
-                style({transform: 'translateX(-100%)'}),
-                animate(300)
-            ]),
-        ])
+        FlyInAnimation
     ],
 })
 export class LoginComponent {
     public email     = new FormControl('', [Validators.required, Validators.email]);
     public password  = new FormControl('', [Validators.required]);
-
-    public toggle = false;
 
     public constructor(
         public authService: AuthService,

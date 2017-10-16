@@ -11,12 +11,6 @@ import { Router } from '@angular/router';
 // Material
 import { MatDialog } from '@angular/material';
 
-// Animation
-import { trigger } from '@angular/animations';
-import { style } from '@angular/animations';
-import { animate } from '@angular/animations';
-import { transition } from '@angular/animations';
-
 // RxJs
 import { Subscription } from 'rxjs/Subscription';
 
@@ -24,27 +18,20 @@ import { Subscription } from 'rxjs/Subscription';
 import { ArticleService } from '../../services/article.service';
 import { ArticleModel } from '../../models/article.model';
 import { ArticleRemoveComponent } from './article-remove/article-remove.component';
+import { FlyInAnimation } from '../../animations/fly-in.animation';
 
 @Component({
     selector: 'app-article',
     templateUrl: './article.component.html',
     styleUrls: ['./article.component.css'],
     animations: [
-        trigger('init', [
-            transition('* => *', [
-                style({transform: 'translateX(-100%)'}),
-                animate(300)
-            ]),
-        ]),
+        FlyInAnimation,
     ],
 })
 export class ArticleComponent implements OnInit, OnDestroy {
     // Subscription
     private paramsSubscription: Subscription;
     private articleSubscription: Subscription;
-
-    // Animation triggers
-    public init = false;
 
     public article: ArticleModel;
 
