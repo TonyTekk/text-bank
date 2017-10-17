@@ -1,25 +1,25 @@
-<h2>Project</h2>
+<h3>Project</h3>
 
 <form [formGroup]="form" (ngSubmit)="update()">
 
-    <mat-form-field class="form-input">
+    <mat-form-field class="input">
         <input matInput
                name="name"
                formControlName="name"
                type="text"
                placeholder="name"
-               minlength="5" required>
+               minlength="3" required>
 
         <mat-error *ngIf="form.get('name').hasError('required')">
             You must enter a value
         </mat-error>
 
         <mat-error *ngIf="form.get('name').hasError('minlength')">
-            Title must have more than 5 characters
+            Title must have more than 3 characters
         </mat-error>
     </mat-form-field>
 
-    <mat-form-field *ngIf="project.apiId !== ''" class="form-input">
+    <mat-form-field *ngIf="project.apiId !== ''" class="input">
         <input matInput
                name="apiId"
                formControlName="apiId"

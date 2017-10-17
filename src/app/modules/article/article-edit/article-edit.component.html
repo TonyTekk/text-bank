@@ -1,5 +1,5 @@
 <form [@show]="show" (ngSubmit)="submit()">
-    <mat-form-field class="form-input">
+    <mat-form-field class="input">
         <input matInput
                name="title"
                [(ngModel)]="article.title"
@@ -11,7 +11,7 @@
         <mat-error *ngIf="article.title.length < 3">Title must have more than 3 characters</mat-error>
     </mat-form-field>
 
-    <mat-form-field class="form-input">
+    <mat-form-field class="input">
         <input matInput
                name="description"
                [(ngModel)]="article.description"
@@ -19,7 +19,7 @@
                placeholder="description">
     </mat-form-field>
 
-    <mat-form-field class="form-input">
+    <mat-form-field class="input">
         <textarea matInput
                   name="text"
                   [(ngModel)]="article.text"

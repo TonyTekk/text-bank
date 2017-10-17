@@ -6,19 +6,35 @@ body {
     background: rgba(0, 0, 0, 0.02);
 }
 
-.text-center {
-    text-align: center;
+.header {
+    display: flex;
+    align-items: baseline;
+    padding: 8px 24px 0;
+    justify-content: space-between;
 }
 
-.text-right {
-    text-align: right;
+.overflow-container {
+    overflow: auto;
+    height: 100%;
 }
 
-.uppercase {
-    text-transform: uppercase;
+.input {
+    width: 100%;
 }
 
-.warn {
-    color: #e53935;
+.error {
+    font-size: 75%;
 }
 
+.login-form {
+    width: 250px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 150px;
+}
+
+@media(max-width:767px){
+    .login-form {
+        margin: auto;
+    }
+}

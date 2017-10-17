@@ -1,5 +1,5 @@
 <div [@fade-in]="'in'" class="header">
-    <mat-form-field floatPlaceholder="never">
+    <mat-form-field class="input" floatPlaceholder="never">
         <input matInput #filter placeholder="Filter projects">
     </mat-form-field>
 
@@ -8,7 +8,7 @@
     </button>
 </div>
 
-<div [@show]="update" class="grid-container">
+<div [@show]="show" class="overflow-container">
     <mat-grid-list cols="2" rowHeight="1:1">
         <!-- Grid -->
         <mat-grid-tile *ngFor="let item of (dataSource.connect() | async)"  [ngStyle]="{'background': item.color}">
@@ -19,7 +19,7 @@
             </button>
             <mat-menu #menu="matMenu" xPosition="before">
                 <button mat-menu-item (click)="edit(item)">Edit</button>
-                <button mat-menu-item (click)="remove(item)" class="warn">Remove</button>
+                <button mat-menu-item (click)="remove(item)">Remove</button>
             </mat-menu>
 
             <h1 class="edit" (click)="toArticle()">{{item.name}}</h1>

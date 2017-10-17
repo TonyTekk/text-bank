@@ -1,5 +1,7 @@
 <div class="header" [@show]="title !== ''">
-    <mat-icon svgIcon="chest"></mat-icon>
+    <button mat-icon-button>
+        <mat-icon svgIcon="chest"></mat-icon>
+    </button>
 
     <span class="title">{{this.title  | slice:1:25}}</span>
 

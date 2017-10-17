@@ -9,12 +9,10 @@
 
 .container {
     height: calc(100vh - 80px);
-}
-
-.header {
     display: flex;
-    align-items: center;
-    min-height: 48px;
+    overflow: auto;
+    flex-direction: column;
+    width: 100%;
 }
 
 .header .title {

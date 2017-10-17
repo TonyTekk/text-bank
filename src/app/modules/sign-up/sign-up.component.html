@@ -1,7 +1,7 @@
-<div [@fade-in]="'in'" class="form">
+<div [@fade-in]="'in'" class="login-form">
      <h3>Sign Up</h3>
 
-     <mat-form-field>
+     <mat-form-field class="input">
          <input matInput
                 name="email"
                 type="email"
@@ -14,7 +14,7 @@
          <mat-error *ngIf="email.hasError('email')">Not a valid email</mat-error>
      </mat-form-field>
 
-     <mat-form-field>
+     <mat-form-field class="input">
          <input matInput
                 name="password"
                 type="password"
@@ -29,7 +29,7 @@
      </mat-form-field>
 
      <p *ngIf="authService.error">
-         <mat-error class="error" >{{authService.error}}</mat-error>
+         <mat-error class="error">{{authService.error}}</mat-error>
      </p>
      <p *ngIf="!authService.error">
          <button mat-button (click)="signUp()" [disabled]="email.invalid || password.invalid">Sign Up</button>

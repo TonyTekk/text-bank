@@ -1,5 +1,5 @@
 <div [@fade-in]="'in'"class="header">
-    <mat-form-field floatPlaceholder="never">
+    <mat-form-field class="input" floatPlaceholder="never">
         <input matInput #filter placeholder="Filter articles">
     </mat-form-field>
 
@@ -8,31 +8,33 @@
     </button>
 </div>
 
-<mat-table [@show]="show" class="table-container" #table [dataSource]="dataSource">
-    <ng-container matColumnDef="title">
-        <mat-header-cell class="title" *matHeaderCellDef> Title </mat-header-cell>
-        <mat-cell class="title" *matCellDef="let row">
-            <div class="title-description">{{row.title}}</div>
-            <div class="description">{{row.description}}</div>
-        </mat-cell>
-    </ng-container>
+<div [@show]="show" class="overflow-container">
+    <mat-table #table [dataSource]="dataSource">
+        <ng-container matColumnDef="title">
+            <mat-header-cell class="title" *matHeaderCellDef> Title </mat-header-cell>
+            <mat-cell class="title" *matCellDef="let row">
+                <div class="title-description">{{row.title}}</div>
+                <div class="description">{{row.description}}</div>
+            </mat-cell>
+        </ng-container>
 
-    <ng-container matColumnDef="text">
-        <mat-header-cell class="text" *matHeaderCellDef> Text </mat-header-cell>
-        <mat-cell class="text" *matCellDef="let row">
-            <div class="text-description"> {{row.text | slice:0:156 }}...</div>
-        </mat-cell>
-    </ng-container>
+        <ng-container matColumnDef="text">
+            <mat-header-cell class="text" *matHeaderCellDef> Text </mat-header-cell>
+            <mat-cell class="text" *matCellDef="let row">
+                <div class="text-description"> {{row.text | slice:0:156 }}...</div>
+            </mat-cell>
+        </ng-container>
 
-    <ng-container matColumnDef="action">
-        <mat-header-cell class="action" *matHeaderCellDef></mat-header-cell>
-        <mat-cell class="action text-right" *matCellDef="let row">
-            <button mat-icon-button (click)="toArticle(row)">
-                <mat-icon class="md-24">edit</mat-icon>
-            </button>
-        </mat-cell>
-    </ng-container>
+        <ng-container matColumnDef="action">
+            <mat-header-cell class="action" *matHeaderCellDef></mat-header-cell>
+            <mat-cell class="action text-right" *matCellDef="let row">
+                <button mat-icon-button (click)="toArticle(row)">
+                    <mat-icon class="md-24">edit</mat-icon>
+                </button>
+            </mat-cell>
+        </ng-container>
 
-    <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: columns;"></mat-row>
-</mat-table>
+        <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: columns;"></mat-row>
+    </mat-table>
+</div>

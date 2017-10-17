@@ -42,7 +42,7 @@ export class ProjectsComponent  implements OnInit, OnDestroy {
     private keySubscription: Subscription;
 
     // Animation trigger
-    public update = 'false';
+    public show = 'false';
 
     // List data
     public database: ListDatabase;
@@ -63,7 +63,7 @@ export class ProjectsComponent  implements OnInit, OnDestroy {
 
         this.listSubscription = this.project.list
             .subscribe(() => {
-                this.update = 'true';
+                this.show = 'true';
             });
 
         this.keySubscription = Observable.fromEvent(this.filter.nativeElement, 'keyup')

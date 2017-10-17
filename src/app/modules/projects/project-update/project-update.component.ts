@@ -24,7 +24,7 @@ export class ProjectUpdateComponent {
     ) { }
 
     public form = new FormGroup({
-        name: new FormControl(this.project.name, [Validators.required, Validators.minLength(5)]),
+        name: new FormControl(this.project.name, [Validators.required, Validators.minLength(3)]),
         apiId: new FormControl(this.project.apiId),
     });
 
