@@ -1,53 +1,14 @@
-<form [@fade-in]="'in'" [formGroup]="form" (ngSubmit)="submit()">
-    <div class="header">
-        <h2>Article</h2>
+<div [@fade-in]="'in'" class="header">
+    <h3>Article</h3>
 
-        <button mat-icon-button
-                type="button"
-                matTooltip="Close"
-                [matTooltipPosition]="'below'"
-                (click)="toArticles()">
-            <mat-icon class="md-24">close</mat-icon>
-        </button>
-    </div>
-    <router-outlet></router-outlet>
-    <!--
-    <mat-form-field class="form-input">
-        <input matInput
-               name="title"
-               formControlName="title"
-               type="text"
-               placeholder="title"
-               minlength="5" required>
+    <button mat-icon-button
+            type="button"
+            matTooltip="Close"
+            [matTooltipPosition]="'below'"
+            routerLink="/articles">
+        <mat-icon class="md-24">close</mat-icon>
+    </button>
+</div>
 
-        <mat-error *ngIf="form.get('title').hasError('required')">
-            You must enter a value
-        </mat-error>
+<router-outlet></router-outlet>
 
-        <mat-error *ngIf="form.get('title').hasError('minlength')">
-            Title must have more than 5 characters
-        </mat-error>
-    </mat-form-field>
-
-    <mat-form-field class="form-input">
-        <input matInput
-               name="description"
-               formControlName="description"
-               type="text"
-               placeholder="description">
-    </mat-form-field>
-
-    <mat-form-field class="form-input">
-        <textarea matInput
-                  name="text"
-                  formControlName="text"
-                  placeholder="Text">
-        </textarea>
-    </mat-form-field>
-
-    <p>
-        <button type="button" mat-button color="warn" *ngIf="article" (click)="remove()">Delete</button>
-        <button type="submit" mat-button [disabled]="form.invalid">OK</button>
-    </p>
-    -->
-</form>

@@ -1,3 +1,33 @@
-<p>
-  article-add works!
-</p>
+<form [@fade-in]="'in'" [formGroup]="form" (ngSubmit)="submit()">
+    <mat-form-field class="form-input">
+        <input matInput
+               name="title"
+               formControlName="title"
+               type="text"
+               placeholder="title"
+               minlength="3" required>
+
+        <mat-error *ngIf="form.get('title').hasError('required')">You must enter a value</mat-error>
+        <mat-error *ngIf="form.get('title').hasError('minlength')">Title must have more than 3 characters</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="form-input">
+        <input matInput
+               name="description"
+               formControlName="description"
+               type="text"
+               placeholder="description">
+    </mat-form-field>
+
+    <mat-form-field class="form-input">
+        <textarea matInput
+                  name="text"
+                  formControlName="text"
+                  placeholder="Text">
+        </textarea>
+    </mat-form-field>
+
+    <p>
+        <button type="submit" mat-button [disabled]="form.invalid">Add</button>
+    </p>
+</form>
