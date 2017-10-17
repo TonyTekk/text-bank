@@ -15,6 +15,7 @@ import { ProjectService } from '../../services/project.service';
 import { ProjectModel } from '../../models/project.model';
 import { ProjectRemoveComponent } from './project-remove/project-remove.component';
 import { ProjectUpdateComponent } from './project-update/project-update.component';
+import { ShowAnimation } from '../../animations/show.animation';
 import { FadeInAnimation } from '../../animations/fade-in.animation';
 
 @Component({
@@ -22,6 +23,7 @@ import { FadeInAnimation } from '../../animations/fade-in.animation';
     templateUrl: './projects.component.html',
     styleUrls: ['./projects.component.css'],
     animations: [
+        ShowAnimation,
         FadeInAnimation,
     ],
 })

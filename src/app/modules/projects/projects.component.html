@@ -1,4 +1,4 @@
-<div class="header">
+<div [@fade-in]="'in'" class="header">
     <mat-form-field floatPlaceholder="never">
         <input matInput #filter placeholder="Filter projects">
     </mat-form-field>
@@ -8,8 +8,8 @@
     </button>
 </div>
 
-<div class="grid-container">
-    <mat-grid-list [@fade-in]="update" cols="2" rowHeight="1:1">
+<div [@show]="update" class="grid-container">
+    <mat-grid-list cols="2" rowHeight="1:1">
         <mat-grid-tile *ngFor="let item of project.list | async" [ngStyle]="{'background': item.color}">
             <div class="key">key: {{item.apiId}}</div>
 

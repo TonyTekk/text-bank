@@ -10,14 +10,14 @@ import { MatIconRegistry } from '@angular/material';
 
 // Services
 import { AuthService } from './services/auth.service';
-import { FadeInAnimation } from './animations/fade-in.animation';
+import { ShowAnimation } from './animations/show.animation';
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css'],
     animations: [
-        FadeInAnimation,
+        ShowAnimation,
     ],
 })
 export class AppComponent implements OnInit {

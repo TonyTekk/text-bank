@@ -1,46 +1,37 @@
-<div [@fly-in]>
-    <div class="form">
-        <h2>Login</h2>
+<div [@fade-in]="'in'" class="form">
+    <h2>Login</h2>
 
-        <mat-form-field>
-            <input matInput
-                   name="email"
-                   type="email"
-                   placeholder="email"
-                   [formControl]="email"
-                   (input)="changeInput()"
-                   email required>
+    <mat-form-field>
+        <input matInput
+               name="email"
+               type="email"
+               placeholder="email"
+               [formControl]="email"
+               (input)="changeInput()"
+               email required>
 
-            <mat-error *ngIf="email.hasError('required')">
-                You must enter a value
-            </mat-error>
+        <mat-error *ngIf="email.hasError('required')">You must enter a value</mat-error>
+        <mat-error *ngIf="email.hasError('email')">Not a valid email</mat-error>
+    </mat-form-field>
 
-            <mat-error *ngIf="email.hasError('email')">
-                Not a valid email
-            </mat-error>
-        </mat-form-field>
+    <mat-form-field>
+        <input matInput
+               name="password"
+               type="password"
+               placeholder="password"
+               [formControl]="password"
+               (input)="changeInput()"
+               (keyup.enter)="login()"
+               minlength="5" required>
 
-        <mat-form-field>
-            <input matInput
-                   name="password"
-                   type="password"
-                   placeholder="password"
-                   [formControl]="password"
-                   (input)="changeInput()"
-                   (keyup.enter)="login()"
-                   minlength="5" required>
+        <mat-error *ngIf="password.hasError('required')">You must enter a value</mat-error>
+    </mat-form-field>
 
-            <mat-error *ngIf="password.hasError('required')">
-                You must enter a value
-            </mat-error>
-        </mat-form-field>
-
-        <p *ngIf="authService.error">
-            <mat-error class="error" >{{authService.error}}</mat-error>
-        </p>
-
-        <p *ngIf="!authService.error">
-            <button mat-button  (click)="login()" [disabled]="email.invalid || password.invalid">Login</button>
-        </p>
-    </div>
+    <p *ngIf="authService.error">
+        <mat-error class="error" >{{authService.error}}</mat-error>
+    </p>
+    <p *ngIf="!authService.error">
+        <button mat-button  (click)="login()" [disabled]="email.invalid || password.invalid">Login</button>
+    </p>
 </div>
+

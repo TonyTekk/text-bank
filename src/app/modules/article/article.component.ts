@@ -35,8 +35,6 @@ export class ArticleComponent implements OnInit, OnDestroy {
 
     public article: ArticleModel;
 
-    public fadeIn = false;
-
     public constructor(
         private router: Router,
         private route: ActivatedRoute,
@@ -57,7 +55,6 @@ export class ArticleComponent implements OnInit, OnDestroy {
                     this.articleSubscription = this.articleService.get(params['articleId'])
                         .subscribe((article) => {
                             if (article) {
-                                this.fadeIn = true;
                                 this.article = new ArticleModel(article);
 
                                 this.form = new FormGroup({
@@ -67,8 +64,6 @@ export class ArticleComponent implements OnInit, OnDestroy {
                                 });
                             }
                         });
-                } else {
-                    this.fadeIn = true;
                 }
             });
     }

@@ -5,10 +5,14 @@ import { animate } from '@angular/animations';
 import { transition } from '@angular/animations';
 import { state } from '@angular/animations';
 
-export const FadeInAnimation = trigger('fade-in', [
-    state('in', style({ opacity: 1 })),
-    transition('void => *', [
-        style({ opacity: 0}),
-        animate(1000)
+export const ShowAnimation =  trigger('show', [
+    state('true', style({
+        opacity: 1
+    })),
+    state('false',   style({
+        opacity: 0
+    })),
+    transition('* => *', [
+        animate(500)
     ]),
 ]);

@@ -19,6 +19,7 @@ import 'rxjs/add/observable/fromEvent';
 // App
 import { ArticleService } from '../../services/article.service';
 import { ArticleModel } from '../../models/article.model';
+import { ShowAnimation } from '../../animations/show.animation';
 import { FadeInAnimation } from '../../animations/fade-in.animation';
 
 @Component({
@@ -26,6 +27,7 @@ import { FadeInAnimation } from '../../animations/fade-in.animation';
     templateUrl: './articles.component.html',
     styleUrls: ['./articles.component.css'],
     animations: [
+        ShowAnimation,
         FadeInAnimation,
     ],
 })

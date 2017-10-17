@@ -5,14 +5,14 @@ import { Validators } from '@angular/forms';
 
 // App
 import { AuthService } from '../../services/auth.service';
-import { FlyInAnimation } from '../../animations/fly-in.animation';
+import { FadeInAnimation } from '../../animations/fade-in.animation';
 
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.css'],
     animations: [
-        FlyInAnimation
+        FadeInAnimation,
     ],
 })
 export class LoginComponent {
