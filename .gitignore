@@ -2,6 +2,7 @@
 
 # compiled output
 /dist
+/functions/node_modules
 /tmp
 /out-tsc
 
@@ -44,3 +45,9 @@ Thumbs.db
 src/environments/environment.ts
 
 src/environments/environment.prod.ts
+
+database.rules.json
+
+functions/index.js
+
+functions/package.json
