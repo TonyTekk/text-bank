@@ -32,7 +32,7 @@ export class ProjectsComponent  implements OnInit, OnDestroy {
     private listSubscription: Subscription;
 
     // Animation trigger
-    public update = false;
+    public update = 'false';
 
     public constructor(
         private router: Router,
@@ -43,7 +43,7 @@ export class ProjectsComponent  implements OnInit, OnDestroy {
     public ngOnInit(): void {
         this.listSubscription = this.project.list
             .subscribe(() => {
-                this.update = true;
+                this.update = 'true';
             });
     }
     public ngOnDestroy(): void { }

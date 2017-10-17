@@ -1,9 +1,6 @@
 // Angular
 import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
-import { FormControl } from '@angular/forms';
-import { Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { OnDestroy} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
@@ -33,8 +30,11 @@ export class ArticleEditComponent implements OnInit, OnDestroy {
     private paramsSubscription: Subscription;
     private articleSubscription: Subscription;
 
+    // Animation trigger
+    public show = 'false';
+
+    // Article model
     public article: ArticleModel = new ArticleModel({});
-    public show = false;
 
     public constructor(
         private router: Router,
@@ -48,7 +48,7 @@ export class ArticleEditComponent implements OnInit, OnDestroy {
             .subscribe(params => {
                 this.articleSubscription = this.articleService.get(params['articleId'])
                     .subscribe((article) => {
-                        article ? this.showForm(article) : this.router.navigate(['/articles']);
+                        article ? this.showForm(article) : this.toArticles();
                     });
             });
     }
@@ -60,13 +60,13 @@ export class ArticleEditComponent implements OnInit, OnDestroy {
 
     private showForm(article): void {
         this.article = new ArticleModel(article);
-        this.show = true;
+        this.show = 'true';
     }
 
     public submit(): void {
         this.articleService.update(this.article)
             .then(() => {
-                this.router.navigate(['/articles']);
+                this.toArticles();
             });
     }
 
@@ -78,9 +78,13 @@ export class ArticleEditComponent implements OnInit, OnDestroy {
                 if (result) {
                     this.articleService.remove(this.article)
                         .then(() => {
-                            this.router.navigate(['/articles']);
+                            this.toArticles();
                         });
                 }
             });
+    }
+
+    public toArticles(): void {
+        this.router.navigate(['/articles']);
     }
 }

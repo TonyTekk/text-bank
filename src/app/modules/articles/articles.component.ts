@@ -37,7 +37,7 @@ export class ArticlesComponent implements OnInit, OnDestroy {
     private keySubscription: Subscription;
 
     // Animation trigger
-    public update = false;
+    public show = 'false';
 
     // Table data
     public columns = ['title', 'text', 'action'];
@@ -58,7 +58,7 @@ export class ArticlesComponent implements OnInit, OnDestroy {
 
         this.listSubscription = this.article.list
             .subscribe(() => {
-                this.update = true;
+                this.show = 'true';
             });
 
         this.keySubscription = Observable.fromEvent(this.filter.nativeElement, 'keyup')
