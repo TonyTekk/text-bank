@@ -14,6 +14,7 @@
 
 form {
     padding: 8px 24px 0;
+    opacity: 0;
 }
 
 .form-input {

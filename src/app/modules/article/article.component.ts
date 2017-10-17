@@ -18,14 +18,14 @@ import { Subscription } from 'rxjs/Subscription';
 import { ArticleService } from '../../services/article.service';
 import { ArticleModel } from '../../models/article.model';
 import { ArticleRemoveComponent } from './article-remove/article-remove.component';
-import { FlyInAnimation } from '../../animations/fly-in.animation';
+import { FadeInAnimation } from '../../animations/fade-in.animation';
 
 @Component({
     selector: 'app-article',
     templateUrl: './article.component.html',
     styleUrls: ['./article.component.css'],
     animations: [
-        FlyInAnimation,
+        FadeInAnimation,
     ],
 })
 export class ArticleComponent implements OnInit, OnDestroy {
@@ -34,6 +34,8 @@ export class ArticleComponent implements OnInit, OnDestroy {
     private articleSubscription: Subscription;
 
     public article: ArticleModel;
+
+    public fadeIn = false;
 
     public constructor(
         private router: Router,
@@ -55,6 +57,7 @@ export class ArticleComponent implements OnInit, OnDestroy {
                     this.articleSubscription = this.articleService.get(params['articleId'])
                         .subscribe((article) => {
                             if (article) {
+                                this.fadeIn = true;
                                 this.article = new ArticleModel(article);
 
                                 this.form = new FormGroup({
@@ -64,6 +67,8 @@ export class ArticleComponent implements OnInit, OnDestroy {
                                 });
                             }
                         });
+                } else {
+                    this.fadeIn = true;
                 }
             });
     }
