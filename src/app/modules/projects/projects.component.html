@@ -8,10 +8,10 @@
     </button>
 </div>
 
-<div [@show]="show" class="overflow-container">
+<div class="overflow-container">
     <mat-grid-list cols="2" rowHeight="1:1">
         <!-- Grid -->
-        <mat-grid-tile *ngFor="let item of (dataSource.connect() | async)"  [ngStyle]="{'background': item.color}">
+        <mat-grid-tile *ngFor="let item of (dataSource.connect() | async)"  [@fade-in]="'in'" [ngStyle]="{'background': item.color}">
             <div class="key">key: {{item.apiId}}</div>
 
             <button mat-icon-button class="btn-menu" [matMenuTriggerFor]="menu">

@@ -5,6 +5,7 @@ import { ViewChild } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { OnDestroy} from '@angular/core';
 import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { DataSource } from '@angular/cdk/collections';
 
 // RxJs
@@ -33,8 +34,8 @@ import { FadeInAnimation } from '../../animations/fade-in.animation';
 })
 export class ArticlesComponent implements OnInit, OnDestroy {
     // Subscription
-    private listSubscription: Subscription;
     private keySubscription: Subscription;
+    private paramsSubscription: Subscription;
 
     // Animation trigger
     public show = 'false';
@@ -48,16 +49,17 @@ export class ArticlesComponent implements OnInit, OnDestroy {
     @ViewChild('filter') public filter: ElementRef;
 
     public constructor(
+        private route: ActivatedRoute,
         private router: Router,
         public article: ArticleService,
     ) { }
 
     public ngOnInit(): void {
-        this.database = new TableDatabase(this.article);
-        this.dataSource = new TableDataSource(this.database);
+        this.paramsSubscription = this.route.params
+            .subscribe(params => {
+                this.database = new TableDatabase(this.article.getListByProjectId(params['projectId']));
+                this.dataSource = new TableDataSource(this.database);
 
-        this.listSubscription = this.article.list
-            .subscribe(() => {
                 this.show = 'true';
             });
 
@@ -72,7 +74,7 @@ export class ArticlesComponent implements OnInit, OnDestroy {
     }
 
     public ngOnDestroy(): void {
-        this.listSubscription.unsubscribe();
+        this.paramsSubscription.unsubscribe();
         this.keySubscription.unsubscribe();
     }
 
@@ -93,9 +95,9 @@ export class TableDatabase {
     }
 
     public constructor(
-        public article: ArticleService,
+        private _list: any,
     ) {
-        this.article.list.subscribe(list => this.dataChange.next(list));
+        _list.subscribe(list => this.dataChange.next(list));
     }
 }
 

@@ -24,7 +24,6 @@ import { ProjectService } from '../../services/project.service';
 import { ProjectModel } from '../../models/project.model';
 import { ProjectRemoveComponent } from './project-remove/project-remove.component';
 import { ProjectUpdateComponent } from './project-update/project-update.component';
-import { ShowAnimation } from '../../animations/show.animation';
 import { FadeInAnimation } from '../../animations/fade-in.animation';
 
 @Component({
@@ -32,17 +31,12 @@ import { FadeInAnimation } from '../../animations/fade-in.animation';
     templateUrl: './projects.component.html',
     styleUrls: ['./projects.component.css'],
     animations: [
-        ShowAnimation,
         FadeInAnimation,
     ],
 })
 export class ProjectsComponent  implements OnInit, OnDestroy {
     // Subscription
-    private listSubscription: Subscription;
     private keySubscription: Subscription;
-
-    // Animation trigger
-    public show = 'false';
 
     // List data
     public database: ListDatabase;
@@ -58,13 +52,8 @@ export class ProjectsComponent  implements OnInit, OnDestroy {
     ) {}
 
     public ngOnInit(): void {
-        this.database = new ListDatabase(this.project);
+        this.database = new ListDatabase(this.project.list);
         this.dataSource = new ListDataSource(this.database);
-
-        this.listSubscription = this.project.list
-            .subscribe(() => {
-                this.show = 'true';
-            });
 
         this.keySubscription = Observable.fromEvent(this.filter.nativeElement, 'keyup')
             .debounceTime(150)
@@ -76,7 +65,6 @@ export class ProjectsComponent  implements OnInit, OnDestroy {
             });
     }
     public ngOnDestroy(): void {
-        this.listSubscription.unsubscribe();
         this.keySubscription.unsubscribe();
     }
 
@@ -132,9 +120,9 @@ export class ListDatabase {
     }
 
     public constructor(
-        public project: ProjectService,
+        private _list: any,
     ) {
-        this.project.list.subscribe(list => this.dataChange.next(list));
+        _list.subscribe(list => this.dataChange.next(list));
     }
 }
 
