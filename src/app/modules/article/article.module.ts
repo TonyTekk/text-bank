@@ -18,6 +18,8 @@ import { ArticleComponent } from './article.component';
 import { ArticleRoutingModule } from './article-routing.module';
 import { ArticleService } from '../../services/article.service';
 import { ArticleRemoveComponent } from './article-remove/article-remove.component';
+import { ArticleAddComponent } from './article-add/article-add.component';
+import { ArticleEditComponent } from './article-edit/article-edit.component';
 
 @NgModule({
     imports: [
@@ -36,6 +38,8 @@ import { ArticleRemoveComponent } from './article-remove/article-remove.componen
     declarations: [
         ArticleComponent,
         ArticleRemoveComponent,
+        ArticleAddComponent,
+        ArticleEditComponent,
     ],
     entryComponents: [
         ArticleRemoveComponent,

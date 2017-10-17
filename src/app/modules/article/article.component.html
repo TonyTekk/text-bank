@@ -10,7 +10,8 @@
             <mat-icon class="md-24">close</mat-icon>
         </button>
     </div>
-
+    <router-outlet></router-outlet>
+    <!--
     <mat-form-field class="form-input">
         <input matInput
                name="title"
@@ -48,4 +49,5 @@
         <button type="button" mat-button color="warn" *ngIf="article" (click)="remove()">Delete</button>
         <button type="submit" mat-button [disabled]="form.invalid">OK</button>
     </p>
+    -->
 </form>
