@@ -13,7 +13,7 @@
     justify-content: space-between;
 }
 
-.mat-table {
+mat-table {
     overflow: auto;
     height: 100%;
 }
@@ -37,10 +37,6 @@ mat-form-field {
 .description {
     font-size: 90%;
     color: rgba(0, 0, 0, 0.54);
-}
-
-.text {
-
 }
 
 .text-description {

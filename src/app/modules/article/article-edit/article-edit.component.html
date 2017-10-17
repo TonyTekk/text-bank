@@ -1,20 +1,20 @@
-<form [@show]="show" [formGroup]="form" (ngSubmit)="submit()">
+<form [@show]="show" (ngSubmit)="submit()">
     <mat-form-field class="form-input">
         <input matInput
                name="title"
-               formControlName="title"
+               [(ngModel)]="article.title"
                type="text"
                placeholder="title"
                minlength="3" required>
 
-        <mat-error *ngIf="form.get('title').hasError('required')">You must enter a value</mat-error>
-        <mat-error *ngIf="form.get('title').hasError('minlength')">Title must have more than 3 characters</mat-error>
+        <mat-error *ngIf="article.title === ''">You must enter a value</mat-error>
+        <mat-error *ngIf="article.title.length < 3">Title must have more than 3 characters</mat-error>
     </mat-form-field>
 
     <mat-form-field class="form-input">
         <input matInput
                name="description"
-               formControlName="description"
+               [(ngModel)]="article.description"
                type="text"
                placeholder="description">
     </mat-form-field>
@@ -22,13 +22,13 @@
     <mat-form-field class="form-input">
         <textarea matInput
                   name="text"
-                  formControlName="text"
+                  [(ngModel)]="article.text"
                   placeholder="Text">
         </textarea>
     </mat-form-field>
 
     <p>
-        <button type="button" mat-button color="warn" *ngIf="article" (click)="remove()">Delete</button>
-        <button type="submit" mat-button [disabled]="form.invalid">Save</button>
+        <button type="button" mat-button color="warn" (click)="remove()">Delete</button>
+        <button type="submit" mat-button [disabled]="article.title === ''">Save</button>
     </p>
 </form>

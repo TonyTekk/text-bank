@@ -31,13 +31,7 @@ export class ArticleAddComponent {
     ) { }
 
     public submit(): void {
-        const article = new ArticleModel({
-            title: this.form.controls.title.value,
-            description: this.form.controls.description.value,
-            text: this.form.controls.text.value,
-        });
-
-        this.articleService.push(article)
+        this.articleService.push(new ArticleModel(this.form.value))
             .then(() => {
                 this.router.navigate(['/articles']);
             });
