@@ -1,5 +1,8 @@
 // Angular
 import { Component } from '@angular/core';
+import { Location } from '@angular/common';
+
+// App
 import { FadeInAnimation } from '../../animations/fade-in.animation';
 
 @Component({
@@ -10,4 +13,12 @@ import { FadeInAnimation } from '../../animations/fade-in.animation';
         FadeInAnimation,
     ],
 })
-export class ArticleComponent { }
+export class ArticleComponent {
+    public constructor(
+        private location: Location,
+    ) { }
+
+    public toArticles(): void {
+        this.location.back();
+    }
+}

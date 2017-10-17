@@ -2,8 +2,8 @@
 import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { OnDestroy} from '@angular/core';
-import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 
 // Material
 import { MatDialog } from '@angular/material';
@@ -39,8 +39,8 @@ export class ArticleEditComponent implements OnInit, OnDestroy {
     public article: ArticleModel = new ArticleModel({});
 
     public constructor(
-        private router: Router,
         private route: ActivatedRoute,
+        private location: Location,
         public dialog: MatDialog,
         public articleService: ArticleService,
         public projectService: ProjectService,
@@ -91,6 +91,6 @@ export class ArticleEditComponent implements OnInit, OnDestroy {
     }
 
     public toArticles(): void {
-        this.router.navigate(['/articles']);
+        this.location.back();
     }
 }
