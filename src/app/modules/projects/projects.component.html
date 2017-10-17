@@ -10,7 +10,8 @@
 
 <div [@show]="update" class="grid-container">
     <mat-grid-list cols="2" rowHeight="1:1">
-        <mat-grid-tile *ngFor="let item of project.list | async" [ngStyle]="{'background': item.color}">
+        <!-- Grid -->
+        <mat-grid-tile *ngFor="let item of (dataSource.connect() | async)"  [ngStyle]="{'background': item.color}">
             <div class="key">key: {{item.apiId}}</div>
 
             <button mat-icon-button class="btn-remove" [matMenuTriggerFor]="menu">
