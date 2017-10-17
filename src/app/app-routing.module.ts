@@ -13,7 +13,7 @@ const appRoutes: Routes = [
         canLoad: [AuthGuard],
     },
     {
-        path: 'articles',
+        path: 'articles/:projectId',
         loadChildren: 'app/modules/articles/articles.module#ArticlesModule',
         canLoad: [AuthGuard],
     },

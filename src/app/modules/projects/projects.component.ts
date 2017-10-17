@@ -120,7 +120,7 @@ export class ProjectsComponent  implements OnInit, OnDestroy {
     }
 
     public toArticle(item: ProjectModel): void {
-        this.router.navigate([`/articles/`]);
+        this.router.navigate([`/articles/${item.id}`]);
     }
 }
 

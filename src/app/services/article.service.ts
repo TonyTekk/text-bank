@@ -35,6 +35,14 @@ export class ArticleService {
             });
     }
 
+    public getListByProjectId(projectId: string): any {
+        if (this.userId) {
+            const link = `${this._item}/${this.userId}`;
+            return  this.db.list(link, ref => ref.orderByChild('projectId').equalTo(projectId)).snapshotChanges()
+                .map(actions => actions.map(item => new ArticleModel(item.payload.val())));
+        }
+    }
+
     public get(id: string): any {
         return this.db.object(`${this._item}/${this.userId}/${id}`).valueChanges();
     }
