@@ -15,7 +15,6 @@
     display: flex;
     align-items: center;
     min-height: 48px;
-    opacity: 0;
 }
 
 .header .title {

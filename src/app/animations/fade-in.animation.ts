@@ -9,6 +9,6 @@ export const FadeInAnimation = trigger('fade-in', [
     state('in', style({ opacity: 1 })),
     transition('void => *', [
         style({ opacity: 0}),
-        animate(1000)
+        animate(500)
     ]),
 ]);

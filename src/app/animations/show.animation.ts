@@ -12,7 +12,11 @@ export const ShowAnimation =  trigger('show', [
     state('false',   style({
         opacity: 0
     })),
-    transition('* => *', [
+    transition('false <=> true', [
+        animate(500)
+    ]),
+    transition('void => *', [
+        style({ opacity: 0}),
         animate(500)
     ]),
 ]);
