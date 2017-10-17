@@ -1,5 +1,15 @@
 <form [@show]="show" (ngSubmit)="submit()">
     <mat-form-field class="input">
+        <mat-select  name="projectId" [(ngModel)]="article.projectId" placeholder="Select category" required>
+            <mat-option *ngFor="let item of (projectService.list | async)" [value]="item.id">
+                {{ item.name }}
+            </mat-option>
+        </mat-select>
+
+        <mat-error *ngIf="article.projectId === ''">You must enter a value</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="input">
         <input matInput
                name="title"
                [(ngModel)]="article.title"

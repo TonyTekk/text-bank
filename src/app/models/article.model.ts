@@ -14,7 +14,7 @@ export class ArticleModel {
             this.apiId = this.id;
         }
 
-        item.progectId ? this.projectId = item.progectId : this.projectId = '';
+        item.projectId ? this.projectId = item.projectId : this.projectId = '';
 
         item.title ? this.title = item.title : this.title = '';
         item.description ? this.description = item.description : this.description = '';

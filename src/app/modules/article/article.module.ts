@@ -12,6 +12,7 @@ import { MatDialogModule } from '@angular/material';
 import { MatInputModule } from '@angular/material';
 import { MatTableModule } from '@angular/material';
 import { MatMenuModule } from '@angular/material';
+import { MatSelectModule } from '@angular/material';
 
 // App
 import { ArticleComponent } from './article.component';
@@ -20,6 +21,7 @@ import { ArticleService } from '../../services/article.service';
 import { ArticleRemoveComponent } from './article-remove/article-remove.component';
 import { ArticleAddComponent } from './article-add/article-add.component';
 import { ArticleEditComponent } from './article-edit/article-edit.component';
+import { ProjectService } from '../../services/project.service';
 
 @NgModule({
     imports: [
@@ -34,6 +36,7 @@ import { ArticleEditComponent } from './article-edit/article-edit.component';
         MatInputModule,
         MatTableModule,
         MatMenuModule,
+        MatSelectModule,
     ],
     declarations: [
         ArticleComponent,
@@ -46,6 +49,7 @@ import { ArticleEditComponent } from './article-edit/article-edit.component';
     ],
     providers: [
         ArticleService,
+        ProjectService,
     ],
 })
 export class ArticleModule { }

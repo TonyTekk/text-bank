@@ -13,6 +13,7 @@ import { Subscription } from 'rxjs/Subscription';
 
 // App
 import { ArticleService } from '../../../services/article.service';
+import { ProjectService } from '../../../services/project.service';
 import { ArticleModel } from '../../../models/article.model';
 import { ArticleRemoveComponent } from '../article-remove/article-remove.component';
 import { ShowAnimation } from '../../../animations/show.animation';
@@ -29,6 +30,7 @@ export class ArticleEditComponent implements OnInit, OnDestroy {
     // Subscription
     private paramsSubscription: Subscription;
     private articleSubscription: Subscription;
+    private projectSubscription: Subscription;
 
     // Animation trigger
     public show = 'false';
@@ -41,9 +43,12 @@ export class ArticleEditComponent implements OnInit, OnDestroy {
         private route: ActivatedRoute,
         public dialog: MatDialog,
         public articleService: ArticleService,
+        public projectService: ProjectService,
     ) { }
 
     public ngOnInit(): void {
+        this.projectSubscription = this.projectService.list.subscribe();
+
         this.paramsSubscription = this.route.params
             .subscribe(params => {
                 this.articleSubscription = this.articleService.get(params['articleId'])
@@ -56,6 +61,7 @@ export class ArticleEditComponent implements OnInit, OnDestroy {
     public ngOnDestroy(): void {
         this.paramsSubscription.unsubscribe();
         this.articleSubscription.unsubscribe();
+        this.projectSubscription.unsubscribe();
     }
 
     private showForm(article): void {
