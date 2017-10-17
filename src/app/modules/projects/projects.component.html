@@ -14,7 +14,7 @@
         <mat-grid-tile *ngFor="let item of (dataSource.connect() | async)"  [ngStyle]="{'background': item.color}">
             <div class="key">key: {{item.apiId}}</div>
 
-            <button mat-icon-button class="btn-remove" [matMenuTriggerFor]="menu">
+            <button mat-icon-button class="btn-menu" [matMenuTriggerFor]="menu">
                 <mat-icon class="md-24">more_vert</mat-icon>
             </button>
             <mat-menu #menu="matMenu" xPosition="before">
@@ -22,7 +22,7 @@
                 <button mat-menu-item (click)="remove(item)">Remove</button>
             </mat-menu>
 
-            <h1 class="edit" (click)="toArticle()">{{item.name}}</h1>
+            <a class="edit" (click)="toArticle(item)">{{item.name}}</a>
         </mat-grid-tile>
 
     </mat-grid-list>

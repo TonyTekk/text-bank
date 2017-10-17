@@ -1,9 +1,10 @@
 .edit {
     padding: 16px;
+    font-size: 200%;
     cursor: pointer;
 }
 
-.btn-remove {
+.btn-menu {
     position: absolute;
     top: 0;
     right: 0;

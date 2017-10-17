@@ -119,8 +119,8 @@ export class ProjectsComponent  implements OnInit, OnDestroy {
             });
     }
 
-    public toArticle(): void {
-        this.router.navigate(['/articles']);
+    public toArticle(item: ProjectModel): void {
+        this.router.navigate([`/articles/`]);
     }
 }
 
